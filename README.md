@@ -12,8 +12,16 @@ Lorem Ipsum Dolor Sit Amet
 
 ### Principais Features:
 
-- 
+- Página de cadastro de vagas
+ 
+- Página de pesquisa de vagas
+
+- Tela de cadastro / sistema de login
+
+- Tela de informações específicas sobre vagas
+
+- Visualização de currículos pelo empregador
 
 ### Ferramentas:
 
-- 
+- Front-end:  
