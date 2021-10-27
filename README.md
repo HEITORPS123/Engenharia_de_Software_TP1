@@ -2,13 +2,13 @@
 
 ### Integrantes: 
 - Arthur Yochio Rodrigues Codama (2019006418)
-- Gean Guilherme dos Santos (2018362054)
+- Gean Guilherme dos Santos (20180362054)
 - Heitor de Paula Santos Damasceno (2019006671)
 - João Antonio Oliveira Pedrosa (2019006751)
 
 ### Objetivo do Sistema:
 
-Lorem Ipsum Dolor Sit Amet
+Elaborar um site para anunciar empregos e vagas de estágio, ou pesquisar por vagas.
 
 ### Principais Features:
 
@@ -24,4 +24,5 @@ Lorem Ipsum Dolor Sit Amet
 
 ### Ferramentas:
 
-- Front-end:  
+- Front-end: HTML, Bootstrap e/ou Materialize 
+- Back-end: Java, SQL 
