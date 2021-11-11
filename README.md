@@ -28,5 +28,4 @@ Elaborar um site para anunciar empregos e vagas de estágio, ou pesquisar por va
 - Back-end: Java, SQL 
 
 ## Backlog da Sprint
-
-https://trello.com/invite/b/LMIDd7fh/4f04984870ce8bd7314af5ce7f59b1de/tp1-engenharia-de-software
+https://trello.com/b/LMIDd7fh/tp1-engenharia-de-software
