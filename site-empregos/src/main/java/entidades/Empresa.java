@@ -1,12 +1,18 @@
 package entidades;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="EMPRESA")
 public class Empresa extends Usuario
 {
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	private String nomeComercial;
 	
 	private String descricao;
@@ -14,6 +20,16 @@ public class Empresa extends Usuario
 	private String setor;
 	
 	private String cnpj;
+	
+	public Long getId()
+	{
+		return id;
+	}
+
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 	
 	public String getNomeComercial()
 	{
@@ -54,4 +70,5 @@ public class Empresa extends Usuario
 	{
 		this.cnpj = cnpj;
 	}
+
 }

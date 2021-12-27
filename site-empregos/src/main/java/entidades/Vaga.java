@@ -4,15 +4,24 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="VAGA")
 public class Vaga
 {
+	@Id
+	@GeneratedValue
 	private Long id;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+    @MapsId
 	private Empresa empresa;
 	
 	private String descricao;

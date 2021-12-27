@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -15,11 +17,25 @@ import javax.persistence.Table;
 @Table(name="ESTAGIARIO")
 public class Estagiario extends Usuario
 {
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	private String nomeCompleto;
 	
 	private String cpf;
 	
 	private Date dataNascimento;
+	
+	public Long getId()
+	{
+		return id;
+	}
+
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 	
 	@OneToOne(fetch = FetchType.LAZY)
     @MapsId
