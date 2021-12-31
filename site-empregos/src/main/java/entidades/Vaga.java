@@ -1,5 +1,6 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,14 +15,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="VAGA")
-public class Vaga
+public class Vaga implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-    @MapsId
 	private Empresa empresa;
 	
 	private String descricao;

@@ -20,4 +20,19 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+	<dependency>
+	    <groupId>org.primefaces</groupId>
+	    <artifactId>primefaces</artifactId>
+	    <version>7.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.jboss.weld/weld-core-impl -->
+	<dependency>
+	    <groupId>org.jboss.weld</groupId>
+	    <artifactId>weld-core-impl</artifactId>
+	    <version>4.0.2.Final</version>
+	</dependency>
+
+  </dependencies>
 </project>

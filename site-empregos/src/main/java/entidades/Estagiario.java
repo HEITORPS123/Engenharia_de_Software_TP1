@@ -1,5 +1,6 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ESTAGIARIO")
-public class Estagiario extends Usuario
+public class Estagiario implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -38,7 +41,6 @@ public class Estagiario extends Usuario
 	}
 	
 	@OneToOne(fetch = FetchType.LAZY)
-    @MapsId
 	private Curriculo curriculo;
 	
 	@OneToMany(mappedBy = "estagiario",cascade = CascadeType.ALL,orphanRemoval = true)

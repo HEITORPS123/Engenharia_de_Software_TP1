@@ -1,5 +1,7 @@
 package entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +13,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="CURRICULO")
-public class Curriculo
+public class Curriculo implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -20,7 +24,6 @@ public class Curriculo
 	private byte [] arquivo;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-    @MapsId
     private Aplicacao aplicacao;
 	
 	@OneToOne(mappedBy = "curriculo", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
