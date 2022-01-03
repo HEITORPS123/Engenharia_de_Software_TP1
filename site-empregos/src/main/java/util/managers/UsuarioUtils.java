@@ -32,7 +32,7 @@ public class UsuarioUtils implements EntityUtils<Usuario>
 	}
 	
 	@Override
-	public String persistEntity()
+	public void persistEntity()
 	{
 		EntityTransaction transactionObj = entityManager.getTransaction();
 		if(!transactionObj.isActive()) {
@@ -41,7 +41,6 @@ public class UsuarioUtils implements EntityUtils<Usuario>
 		entityManager.persist(usuario);
 		transactionObj.commit();
 		this.usuario = new Usuario();
-		return "/index.html?faces-redirect=true";
 	}
 
 	@Override

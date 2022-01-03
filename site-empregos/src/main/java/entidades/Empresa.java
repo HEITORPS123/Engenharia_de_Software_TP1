@@ -2,9 +2,13 @@ package entidades;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +28,11 @@ public class Empresa implements Serializable
 	private String setor;
 	
 	private String cnpj;
+	
+	@OneToOne(mappedBy = "empresa", cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name="empresa_id")
+	private Usuario usuario;
 	
 	public Long getId()
 	{
@@ -73,6 +82,16 @@ public class Empresa implements Serializable
 	public void setCnpj(String cnpj)
 	{
 		this.cnpj = cnpj;
+	}
+
+	public Usuario getUsuario()
+	{
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario)
+	{
+		this.usuario = usuario;
 	}
 
 }

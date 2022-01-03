@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,9 +27,6 @@ public class Aplicacao implements Serializable
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Vaga vaga;
-	
-	@OneToOne(mappedBy = "aplicacao", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	private Curriculo curriculo;
 	
 	private String status;
 	
@@ -60,16 +58,6 @@ public class Aplicacao implements Serializable
 	public void setVaga(Vaga vaga)
 	{
 		this.vaga = vaga;
-	}
-	
-	public Curriculo getCurriculo()
-	{
-		return curriculo;
-	}
-	
-	public void setCurriculo(Curriculo curriculo)
-	{
-		this.curriculo = curriculo;
 	}
 	
 	public String getStatus()

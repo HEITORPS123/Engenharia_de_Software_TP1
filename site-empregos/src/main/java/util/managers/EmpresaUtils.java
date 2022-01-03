@@ -10,24 +10,24 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import entidades.Estagiario;
+import entidades.Empresa;
 import entidades.Usuario;
 
 @ManagedBean
 @SessionScoped
-public class EstagiarioUtils implements EntityUtils<Estagiario>
+public class EmpresaUtils implements EntityUtils<Empresa>
 {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
-	private Estagiario estagiario;
+	private Empresa empresa;
 	private Usuario usuario;
 	
-	private List<Estagiario> listaEntidades;
+	private List<Empresa> listaEntidades;
 	
-	public EstagiarioUtils() {
+	public EmpresaUtils() {
 		this.entityManagerFactory = Persistence.createEntityManagerFactory("site-empregos");
 		this.entityManager = entityManagerFactory.createEntityManager();
-		this.estagiario = new Estagiario();
+		this.empresa = new Empresa();
 	}
 	
 	@Override
@@ -37,11 +37,11 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 		if(!transactionObj.isActive()) {
 			transactionObj.begin();
 	    }
-		usuario.setEstagiario(estagiario);
-		estagiario.setUsuario(usuario);
-		entityManager.persist(estagiario);
+		usuario.setEmpresa(empresa);
+		empresa.setUsuario(usuario);
+		entityManager.persist(empresa);
 		transactionObj.commit();
-		this.estagiario = new Estagiario();
+		this.empresa = new Empresa();
 		this.usuario = new Usuario();
 	}
 
@@ -53,26 +53,26 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 	}
 
 	@Override
-	public List<Estagiario> getAllEntities()
+	public List<Empresa> getAllEntities()
 	{
-		Query query = entityManager.createQuery("SELECT e FROM estagiario e",Estagiario.class);
+		Query query = entityManager.createQuery("SELECT e FROM empresa e",Empresa.class);
 		return query.getResultList();
 	}
 
 	@Override
-	public Estagiario searchEntityByName(String nome)
+	public Empresa searchEntityByName(String nome)
 	{
-		Query query = entityManager.createQuery("SELECT e FROM estagiario e WHERE e.nome = ?1", Estagiario.class).setParameter(1, nome);
-		return (Estagiario) query.getSingleResult();
+		Query query = entityManager.createQuery("SELECT e FROM empresa e WHERE e.nomeComercial = ?1", Empresa.class).setParameter(1, nome);
+		return (Empresa) query.getSingleResult();
 	}
 
 	@Override
-	public Estagiario searchEntity(Long id)
+	public Empresa searchEntity(Long id)
 	{
-		return entityManager.find(Estagiario.class, id);
+		return entityManager.find(Empresa.class, id);
 	}
 
-	public List<Estagiario> getListaEntidades()
+	public List<Empresa> getListaEntidades()
 	{
 		if(listaEntidades == null) {
 			listaEntidades = getAllEntities();
@@ -80,22 +80,22 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 		return listaEntidades;
 	}
 
-	public void setListaEntidades(List<Estagiario> listaEntidades)
+	public void setListaEntidades(List<Empresa> listaEntidades)
 	{
 		this.listaEntidades = listaEntidades;
 	}
 
-	public Estagiario getEstagiario()
+	public Empresa getEmpresa()
 	{
-		if(estagiario == null) {
-			this.estagiario = new Estagiario();
+		if(empresa == null) {
+			this.empresa = new Empresa();
 		}
-		return estagiario;
+		return empresa;
 	}
 
-	public void setEstagiario(Estagiario estagiario)
+	public void setEmpresa(Empresa estagiario)
 	{
-		this.estagiario = estagiario;
+		this.empresa = estagiario;
 	}
 
 	public Usuario getUsuario()

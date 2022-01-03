@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="style.css"/>
+</h:head>
+<h:body>
+	<h:form>
+	  <div class="container">
+	    <h:outputLabel for="uname"><b>Nome de usuario</b></h:outputLabel>
+	    <h:inputText id="uname" value="#{empresaUtils.usuario.login}" placeholder="Digite nome do Usuario" required="true"/>
+	
+	    <h:outputLabel for="email"><b>E-mail</b></h:outputLabel>
+	    <h:inputText id="email" value="#{empresaUtils.usuario.email}" placeholder="Digite o e-mail" required="true"/>
+	    
+	    <h:outputLabel for="senha"><b>Senha</b></h:outputLabel>
+	    <h:inputText id="senha" value="#{empresaUtils.usuario.senha}" placeholder="Digite a senha" required="true"/>
+	    
+	    <h:outputLabel for="nomec"><b>Nome Comercial</b></h:outputLabel>
+	    <h:inputText id="nomec" value="#{empresaUtils.empresa.nomeComercial}" placeholder="Digite o nome comercial" required="true"/>
+		
+		<h:outputLabel for="descricao"><b>Descrição</b></h:outputLabel>
+	    <h:inputText id="descricao" value="#{empresaUtils.empresa.descricao}" placeholder="Digite a descricao" required="true"/>
+	    
+	    <h:outputLabel for="setor"><b>Setor</b></h:outputLabel>
+	    <h:inputText id="setor" value="#{empresaUtils.empresa.setor}" placeholder="Digite o setor" required="true"/>
+	    
+		<h:outputLabel for="cnpj"><b>CNPJ</b></h:outputLabel>
+	    <p:inputMask  id="cnpj" mask="99.999.999/9999-99" value="#{empresaUtils.empresa.cnpj}" required="true"/>
+
+	    <p:commandButton id="botao" value= "Criar" action="#{empresaUtils.persistEntity}" outcome="index" styleClass="botao"/>
+	  </div>
+	
+	  <div class="container">
+	  </div>
+	</h:form>
+</h:body>
+</html>

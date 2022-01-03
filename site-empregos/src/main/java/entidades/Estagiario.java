@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -30,6 +31,18 @@ public class Estagiario implements Serializable
 	
 	private Date dataNascimento;
 	
+	@OneToOne(mappedBy = "estagiario", cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name="estagiario_id")
+	private Usuario usuario;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "curriculo_id")
+	private Curriculo curriculo;
+	
+	@OneToMany(mappedBy = "estagiario")
+	private List<Aplicacao> aplicacoes = new ArrayList<Aplicacao>();
+	
 	public Long getId()
 	{
 		return id;
@@ -39,12 +52,6 @@ public class Estagiario implements Serializable
 	{
 		this.id = id;
 	}
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	private Curriculo curriculo;
-	
-	@OneToMany(mappedBy = "estagiario",cascade = CascadeType.ALL,orphanRemoval = true)
-	private List<Aplicacao> aplicacoes;
 	
 	public String getNomeCompleto()
 	{
@@ -74,5 +81,35 @@ public class Estagiario implements Serializable
 	public void setDataNascimento(Date dataNascimento)
 	{
 		this.dataNascimento = dataNascimento;
+	}
+
+	public Usuario getUsuario()
+	{
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario)
+	{
+		this.usuario = usuario;
+	}
+
+	public Curriculo getCurriculo()
+	{
+		return curriculo;
+	}
+
+	public void setCurriculo(Curriculo curriculo)
+	{
+		this.curriculo = curriculo;
+	}
+
+	public List<Aplicacao> getAplicacoes()
+	{
+		return aplicacoes;
+	}
+
+	public void setAplicacoes(List<Aplicacao> aplicacoes)
+	{
+		this.aplicacoes = aplicacoes;
 	}
 }

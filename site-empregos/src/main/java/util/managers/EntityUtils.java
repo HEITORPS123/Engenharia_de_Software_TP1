@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface EntityUtils<T>
 {
-	public String persistEntity();
+	public void persistEntity();
 	public void removeEntity(Long id);
 	public List<T> getAllEntities();
 	public T searchEntity(Long id);

@@ -23,10 +23,8 @@ public class Curriculo implements Serializable
 	
 	private byte [] arquivo;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-    private Aplicacao aplicacao;
-	
-	@OneToOne(mappedBy = "curriculo", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "curriculo", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
 	private Estagiario estagiario;
 	
 	public Long getId()

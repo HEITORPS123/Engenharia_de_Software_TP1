@@ -5,6 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <build>
+  	<finalName>site-empregos</finalName>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -17,6 +18,9 @@
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
+        <configuration>
+           <webappDirectory>/home/heitor/opt/wildfly-25.0.1.Final/standalone/deployments/${project.build.finalName}.war</webappDirectory>
+     	</configuration>
       </plugin>
     </plugins>
   </build>
