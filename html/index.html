@@ -1,22 +1,395 @@
 <!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<form action="action_page" method="post">
-  <div class="container">
-    <label for="uname"><b>Usuário</b></label>
-    <input type="text" placeholder="Digite nome do Usuário" name="uname" required>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title> site-empregos </title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"> site-empregos </a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Vagas</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#footer">Sobre</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="assets/img/examples/estagio.png" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">site-empregos</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-building"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0"> Plataforma de Divulgação de Estágios</p>
+            </div>
+        </header>
 
-    <label for="psw"><b>Senha</b></label>
-    <input type="password" placeholder="Digite a senha" name="psw" required>
+        <!-- Seção de Vagas-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Heading -->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Vagas</h2>
+                <!-- Divisor com Ícone -->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Listagem de Vagas -->
+                <div class="row justify-content-center">
+                    
+                    <!-- Portfolio Item 1-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="card p-3 mb-2">
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <img src="assets/img/examples/nesquik.jpg" alt="..." class="rounded"> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0"> Nesquik </h6> <span> Fevereiro de 2022 </span>
+                                    </div>
+                                </div>
+                            </div>
 
-    <button type="submit">Login</button>
-  </div>
+                            <div class="mt-5">
+                                <h3 class="heading"> Estagiário Front End - Website Nesquik </h3>
+                                <div class="mt-5">
+                                    <div class = "row">
+                                        <div class = "col"> 
+                                            <span> <b>Local:</b> São Paulo </span>
+                                            <span> <b>Salário:</b> R$1700,00 </span> 
+                                        </div>
+                                        <div class = "col"> 
+                                            <span> <b>Carga Horária:</b> 30hs </span>
+                                            <span> <b>Posição:</b> Estágio Regular </span> 
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <button type="button" class="btn btn-success"> Aplicar </button>
+                                        </div>        
+                                    </div>
+                                </div>
+                                <div class="mt-5">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-3"> <span class="text1">1 já aplicaram.<span class="text2"> Capacidade 2.</span></span> </div>
+                                </div>
+                            </div>
 
-  <div class="container">
-  </div>
-</form>
-</body>
+                        </div>
+                    </div>
+                    
+                    <!-- Portfolio Item 2-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="card p-3 mb-2">
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <img src="assets/img/examples/Speed-azul.png" alt="..." class="rounded"> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0"> Speed Lab - Dcc </h6> <span> Abril 2022 </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <h3 class="heading"> Iniciação Científica em NLP </h3>
+                                <div class="mt-5">
+                                    <div class = "row">
+                                        <div class = "col"> 
+                                            <span> <b>Local:</b> DCC - UFMG </span>
+                                            <span> <b>Salário:</b> R$400,00 </span> 
+                                        </div>
+                                        <div class = "col"> 
+                                            <span> <b>Carga Horária:</b> 20hs </span>
+                                            <span> <b>Posição:</b> Iniciação Científica </span> 
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <button type="button" class="btn btn-success"> Aplicar </button>
+                                        </div>        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="mt-3"> <span class="text1">2 já aplicaram.<span class="text2"> Capacidade 2.</span></span> </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 3-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="card p-3 mb-2">
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <img src="assets/img/examples/Speed-azul.png" alt="..." class="rounded"> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0"> Speed Lab - Dcc </h6> <span> Agosto 2022 </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <h3 class="heading"> Iniciação Científica em Data Science </h3>
+                                <div class="mt-5">
+                                    <div class = "row">
+                                        <div class = "col"> 
+                                            <span> <b>Local:</b> DCC - UFMG </span>
+                                            <span> <b>Salário:</b> R$400,00 </span> 
+                                        </div>
+                                        <div class = "col"> 
+                                            <span> <b>Carga Horária:</b> 20hs </span>
+                                            <span> <b>Posição:</b> Iniciação Científica </span> 
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <button type="button" class="btn btn-success"> Aplicar </button>
+                                        </div>        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="mt-3"> <span class="text1">9 já aplicaram. <span class="text2"> Capacidade 10.</span></span> </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 4-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="card p-3 mb-2">
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <img src="assets/img/examples/new-google-favicon-logo.png" alt="..." class="rounded"> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0"> Google </h6> <span> Março 2022 </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <h3 class="heading"> Estagiário Front End </h3>
+                                <div class="mt-5">
+                                    <div class = "row">
+                                        <div class = "col"> 
+                                            <span> <b>Local:</b> Remoto </span>
+                                            <span> <b>Salário:</b> R$1200,00 </span> 
+                                        </div>
+                                        <div class = "col"> 
+                                            <span> <b>Carga Horária:</b> 20hs </span>
+                                            <span> <b>Posição:</b> Estágio Regular </span> 
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <button type="button" class="btn btn-success"> Aplicar </button>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="mt-5">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-3"> <span class="text1">2 já aplicaram.<span class="text2"> Capacidade 3.</span></span> </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 5-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="card p-3 mb-2">
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <img src="assets/img/examples/new-google-favicon-logo.png" alt="..." class="rounded"> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0"> Google </h6> <span> Março 2022 </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <h3 class="heading"> Estagiário Back End </h3>
+                                <div class="mt-5">
+                                    <div class = "row">
+                                        <div class = "col"> 
+                                            <span> <b>Local:</b> Remoto </span>
+                                            <span> <b>Salário:</b> R$1200,00 </span> 
+                                        </div>
+                                        <div class = "col"> 
+                                            <span> <b>Carga Horária:</b> 20hs </span>
+                                            <span> <b>Posição:</b> Estágio Regular </span> 
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <button type="button" class="btn btn-success"> Aplicar </button>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="mt-5">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-3"> <span class="text1">0 já aplicaram.<span class="text2"> Capacidade 10.</span></span> </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 6-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="card p-3 mb-2">
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <img src="assets/img/examples/new-google-favicon-logo.png" alt="..." class="rounded"> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0"> Google </h6> <span> Março 2022 </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <h3 class="heading"> Estagiário </h3>
+                                <div class="mt-5">
+                                    <div class = "row">
+                                        <div class = "col"> 
+                                            <span> <b>Local:</b> Remoto </span>
+                                            <span> <b>Salário:</b> R$1200,00 </span> 
+                                        </div>
+                                        <div class = "col"> 
+                                            <span> <b>Carga Horária:</b> 20hs </span>
+                                            <span> <b>Posição:</b> Estágio Regular </span> 
+                                        </div>
+                                    </div>
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <button type="button" class="btn btn-success"> Aplicar </button>
+                                        </div>        
+                                    </div>
+                                </div>
+
+                                <div class="mt-5">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 14%" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-3"> <span class="text1">7 já aplicaram. <span class="text2"> Capacidade 50.</span></span> </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                   
+        <!------------------------------------------------- Fim das Vagas ------------------------------------------->
+        
+
+        <!-- Footer-->
+        <section id="footer">
+            <footer class="footer text-center">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- Footer Location-->
+                        <div class="col-lg-4 mb-5 mb-lg-0">
+                            <h4 class="text-uppercase mb-4"> Desenvolvedores </h4>
+                            <ul style="list-style:none">
+                                <li> Arthur Yochio </li>
+                                <li> Gean dos Santos </li>
+                                <li> Heitor Damasceno </li>
+                                <li> João Pedrosa </li>
+                            </ul>
+                        </div>
+
+                        <!-- Footer Social Icons -->
+                        <div class="col-lg-4 mb-5 mb-lg-0">
+                            <h4 class="text-uppercase mb-4"> Links </h4>
+                            <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/HEITORPS123/Engenharia_de_Software_TP1"><i class="fab fa-fw fa-github"></i></a>
+                            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                        </div>
+
+                        <!-- Footer About Text-->
+                        <div class="col-lg-4">
+                            <h4 class="text-uppercase mb-4">Trabalho Prático</h4>
+                            <p class="lead mb-0">
+                                site-empregos foi desenvolvido como parte de um trabalho
+                                prático para a disciplina de Engenharia de Software do DCC-UFMG.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+        
+        <!-- Copyright Section-->
+        <div class="copyright py-4 text-center text-white">
+            <div class="container"><small> DCC - UFMG 2021</small></div>
+        </div>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
 </html>

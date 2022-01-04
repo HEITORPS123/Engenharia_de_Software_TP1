@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    template="/template.xhtml">
+
+        <ui:define name="general_content">
+            <h:form>
+		  		<div class="container">
+			    	<h:outputLabel for="uname"><b>Usuário</b></h:outputLabel>
+			    	<p:inputText type="text" value="#{loginManager.login}" placeholder="Digite nome do Usuário" name="uname" required="true"/>
+			
+			    	<h:outputLabel for="psw"><b>Senha</b></h:outputLabel>
+			    	<p:inputText type="password" value="#{loginManager.senha}" placeholder="Digite a senha" name="psw" required="true"/>
+			
+			    	<p:commandButton styleClass="botaologin" value="Login" action="#{loginManager.login}"/>
+			 	</div>
+					
+			  	<div class="container">
+			  		<h:link id="link1" outcome="addestagiario.xhtml" style="margin-right:20px;">
+		            	<h:outputText value="Criar estagiário"/>
+		        	</h:link>
+		        	
+		        	<h:link id="link2" outcome="addempresa.xhtml" style="margin-right:20px;">
+		            	<h:outputText value="Criar empresa"/>
+		        	</h:link>
+			  	</div>
+			</h:form>
+        </ui:define>
+
+</ui:composition>

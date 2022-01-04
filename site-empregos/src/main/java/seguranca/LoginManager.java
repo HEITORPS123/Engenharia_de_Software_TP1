@@ -2,19 +2,34 @@ package seguranca;
 
 import java.io.Serializable;
 
-import entidades.Usuario;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 
+import entidades.Usuario;
+import util.managers.UsuarioUtils;
+
+@ManagedBean
+@SessionScoped
 public class LoginManager implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
+	@Inject
+	private UsuarioUtils usuarioUtils;
+	
 	private String login;
-	private String password;
+	private String senha;
 	
 	private Usuario usuario;
 	
-	public void login() {
-		
+	public String login() {
+		usuario = usuarioUtils.searchEntityByName(login);
+		if(!usuario.getSenha().equals(senha)) {
+			usuario = null;
+			return null;
+		}
+		return "/index.xhtml?faces-redirect=true";
 	}
 	
 	public String getLogin()
@@ -26,26 +41,23 @@ public class LoginManager implements Serializable
 	{
 		this.login = login;
 	}
-	
-	public String getPassword()
+
+	public String getSenha()
 	{
-		return password;
-	}
-	
-	public void setPassword(String password)
-	{
-		this.password = password;
+		return senha;
 	}
 
+	public void setSenha(String senha)
+	{
+		this.senha = senha;
+	}
+	
 	public boolean isLogado()
 	{
-		/*
 		if(usuario == null){
 			return false;
 		}else{
 			return true;
 		}
-		*/
-		return true;
 	}
 }
