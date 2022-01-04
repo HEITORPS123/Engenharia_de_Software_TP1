@@ -31,11 +31,11 @@ public class FiltroRequisicoes implements Filter
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 	    HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 		
-	    if (logManager.isLogado()) {
+	    if (logManager.isLogado() || httpServletRequest.getRequestURL().toString().endsWith("/index.html")) {
 	    	filterChain.doFilter(servletRequest, servletResponse);
 	    }else {
 	        httpServletResponse.sendRedirect(
-	            httpServletRequest.getContextPath() + "/login.xhtml?faces-redirect=true");
+	            httpServletRequest.getContextPath() + "/index.html");
 	    }
 	}
 
