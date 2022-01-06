@@ -2,10 +2,8 @@ package util.managers;
 
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,8 +12,8 @@ import javax.persistence.Query;
 
 import entidades.Usuario;
 
-@ManagedBean
-@SessionScoped
+@Named
+@RequestScoped
 public class UsuarioUtils implements EntityUtils<Usuario>
 {
 	private EntityManagerFactory entityManagerFactory;

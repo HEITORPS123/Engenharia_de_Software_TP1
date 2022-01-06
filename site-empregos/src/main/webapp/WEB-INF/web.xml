@@ -10,14 +10,12 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
-  <!-- 
   <filter>
-  	<filter-name>FiltroRequisicoes</filter-name>
+  	<filter-name>Logado</filter-name>
   	<filter-class>seguranca.FiltroRequisicoes</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>FiltroRequisicoes</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping> 
-  -->
+  	<filter-name>Logado</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>
