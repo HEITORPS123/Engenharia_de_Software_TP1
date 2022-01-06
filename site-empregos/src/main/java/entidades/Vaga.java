@@ -23,12 +23,22 @@ public class Vaga implements Serializable
 	@GeneratedValue
 	private Long id;
 	
+	private String nome;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	private Empresa empresa;
 	
 	private String descricao;
 	
-	private int numeroRestante;
+	private String local;
+	
+	private Integer cargaHoraria;
+	
+	private String posicao;
+	
+	private double salario;
+	
+	private Integer numeroRestante;
 	
 	@OneToMany(mappedBy = "vaga",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Aplicacao> aplicacoes;
@@ -42,34 +52,95 @@ public class Vaga implements Serializable
 	{
 		this.id = id;
 	}
-	
+
+	public String getNome()
+	{
+		return nome;
+	}
+
+	public void setNome(String nome)
+	{
+		this.nome = nome;
+	}
+
 	public Empresa getEmpresa()
 	{
 		return empresa;
 	}
-	
+
 	public void setEmpresa(Empresa empresa)
 	{
 		this.empresa = empresa;
 	}
-	
+
 	public String getDescricao()
 	{
 		return descricao;
 	}
-	
+
 	public void setDescricao(String descricao)
 	{
 		this.descricao = descricao;
 	}
-	
-	public int getNumeroRestante()
+
+	public String getLocal()
+	{
+		return local;
+	}
+
+	public void setLocal(String local)
+	{
+		this.local = local;
+	}
+
+	public Integer getCargaHoraria()
+	{
+		return cargaHoraria;
+	}
+
+	public void setCargaHoraria(Integer cargaHoraria)
+	{
+		this.cargaHoraria = cargaHoraria;
+	}
+
+	public String getPosicao()
+	{
+		return posicao;
+	}
+
+	public void setPosicao(String posicao)
+	{
+		this.posicao = posicao;
+	}
+
+	public double getSalario()
+	{
+		return salario;
+	}
+
+	public void setSalario(double salario)
+	{
+		this.salario = salario;
+	}
+
+	public Integer getNumeroRestante()
 	{
 		return numeroRestante;
 	}
-	
-	public void setNumeroRestante(int numeroRestante)
+
+	public void setNumeroRestante(Integer numeroRestante)
 	{
 		this.numeroRestante = numeroRestante;
 	}
+
+	public List<Aplicacao> getAplicacoes()
+	{
+		return aplicacoes;
+	}
+
+	public void setAplicacoes(List<Aplicacao> aplicacoes)
+	{
+		this.aplicacoes = aplicacoes;
+	}
+	
 }
