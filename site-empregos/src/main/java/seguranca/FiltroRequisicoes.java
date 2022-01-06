@@ -16,7 +16,7 @@ public class FiltroRequisicoes implements Filter
 {
 
 	@Inject
-	public LoginManager logManager;
+	public LoginManager loginManager;
 	
 	@Override
 	public void destroy()
@@ -30,12 +30,13 @@ public class FiltroRequisicoes implements Filter
 	{
 		HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 	    HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
+	    String url = httpServletRequest.getRequestURL().toString();
 		
-	    if (logManager.isLogado()) {
+	    if (loginManager.isLogado() || url.contains("/index.xhtml")) {
 	    	filterChain.doFilter(servletRequest, servletResponse);
 	    }else {
 	        httpServletResponse.sendRedirect(
-	            httpServletRequest.getContextPath() + "/login.xhtml?faces-redirect=true");
+	            httpServletRequest.getContextPath() + "/index.xhtml?faces-redirect=true");
 	    }
 	}
 

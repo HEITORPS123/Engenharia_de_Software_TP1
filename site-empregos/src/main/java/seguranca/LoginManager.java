@@ -2,15 +2,17 @@ package seguranca;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import entidades.Usuario;
 import util.managers.UsuarioUtils;
 
-@ManagedBean
-@SessionScoped
+@Named
+@RequestScoped
 public class LoginManager implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -25,11 +27,16 @@ public class LoginManager implements Serializable
 	
 	public String login() {
 		usuario = usuarioUtils.searchEntityByName(login);
+        FacesContext context = FacesContext.getCurrentInstance();
+        
 		if(!usuario.getSenha().equals(senha)) {
+            context.addMessage(null, new FacesMessage("usuario nao existe"));
 			usuario = null;
 			return null;
+		} else {
+			context.getExternalContext().getSessionMap().put("usuario", usuario);
+			return "/addestagiario.xhtml?faces-redirect=true";
 		}
-		return "/index.xhtml?faces-redirect=true";
 	}
 	
 	public String getLogin()
@@ -54,10 +61,13 @@ public class LoginManager implements Serializable
 	
 	public boolean isLogado()
 	{
+		return false;
+		/*
 		if(usuario == null){
 			return false;
 		}else{
 			return true;
 		}
+		*/
 	}
 }
