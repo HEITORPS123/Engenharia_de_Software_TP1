@@ -6,27 +6,76 @@
     template="/template.xhtml">
 
         <ui:define name="general_content">
-            <h:form>
-		  		<div class="container">
-			    	<h:outputLabel for="uname"><b>Usuário</b></h:outputLabel>
-			    	<p:inputText type="text" value="#{loginManager.login}" placeholder="Digite nome do Usuário" name="uname" required="true"/>
-			
-			    	<h:outputLabel for="psw"><b>Senha</b></h:outputLabel>
-			    	<p:inputText type="password" value="#{loginManager.senha}" placeholder="Digite a senha" name="psw" required="true"/>
-			
-			    	<p:commandButton styleClass="botaologin" value="Login" action="#{loginManager.login}"/>
-			 	</div>
-					
-			  	<div class="container">
-			  		<h:link id="link1" outcome="addestagiario.xhtml" style="margin-right:20px;">
-		            	<h:outputText value="Criar estagiário"/>
-		        	</h:link>
-		        	
-		        	<h:link id="link2" outcome="addempresa.xhtml" style="margin-right:20px;">
-		            	<h:outputText value="Criar empresa"/>
-		        	</h:link>
-			  	</div>
-			</h:form>
-        </ui:define>
+		<header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="assets/img/examples/estagio.png" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">site-empregos</h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-building"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0"> Plataforma de Divulgação de Estágios</p>
+            </div>
+        </header>
+        
+        <!-- Seção de Vagas-->
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Heading -->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Vagas</h2>
+                <!-- Divisor com Ícone -->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Listagem de Vagas -->
+                <div class="row justify-content-center">
+                    
+                    <ui:repeat var="v" value="#{vagaUtils.listaEntidades}" >
+                    	<div class="col-md-6 col-lg-4 mb-5">
+                        <div class="card p-3 mb-2">
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div class="icon"> <img src="assets/img/examples/nesquik.jpg" alt="..." class="rounded"/> </div>
+                                    <div class="ms-2 c-details">
+                                        <h6 class="mb-0"> #{v.empresa.nomeComercial} </h6> <span> Fevereiro de 2022 </span>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="mt-5">
+                                <h3 class="heading"> #{v.nome} </h3>
+                                <div class="mt-5">
+                                    <div class = "row">
+                                        <div class = "col"> 
+                                            <span> <b>Local:</b> #{v.local} </span> <br/>
+                                            <span> <b>Salário:</b> #{v.salario} </span> 
+                                        </div>
+                                        <div class = "col"> 
+                                            <span> <b>Carga Horária:</b> #{v.cargaHoraria}</span><br/>
+                                            <span> <b>Posição:</b> #{v.posicao} </span> 
+                                        </div>
+                                    </div><br/>
+                                    <div class = "row">
+                                        <div class = "col">
+                                            <button type="button" class="btn btn-success"> Aplicar </button>
+                                        </div>        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    	</div>
+                    </ui:repeat>
+                </div>
+            </div>
+        </section>     
+  </ui:define>
 </ui:composition>
