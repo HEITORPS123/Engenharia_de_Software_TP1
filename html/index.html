@@ -29,11 +29,13 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Vagas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#footer">Sobre</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Login</a></li>
+                        <li onclick="document.getElementById('id01').style.display='block'" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Login
+                        </a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
@@ -334,6 +336,37 @@
             </div>
         </section>
 
+        <!-- Login Modal -->
+        <div id="id01" class="card modal bg-white cemter-screen">
+            <span onclick="document.getElementById('id01').style.display='none'"
+            class="close" title="Close Modal">&times;</span>
+
+            <!-- Modal Content -->
+            <div class="container text-center" style="width: 200px;">
+                <img src="assets/img/profile.png" alt="Avatar" class="avatar">
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-1 col-lg-2"></div>
+                <div class="col">
+                    <form>
+                        <div class="form-group" style = "margin-top: 5%;">
+                        <label for="exampleInputEmail1">Login</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter login">
+                        </div>
+                        <div class="form-group" style = "margin-top: 5%;">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 40%;"> Enviar </button>
+                        <a href="criar_usuario.html" class = "text-dark" style="width: 40%; margin-left: 10%;"> Criar Usuário </a>
+                    </form>
+                </div>
+                <div class="col-sm-1 col-lg-2"></div>
+            </div>
+        </div>
                    
         <!------------------------------------------------- Fim das Vagas ------------------------------------------->
         
@@ -382,6 +415,18 @@
             <div class="container"><small> DCC - UFMG 2021</small></div>
         </div>
         
+        <script>
+            // Get the modal
+            var modal = document.getElementById('id01');
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+        </script>
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
