@@ -1,36 +1,74 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<link rel="stylesheet" href="style.css"/>
-</h:head>
-<h:body>
-	<h:form>
-	  <div class="container">
-	    <h:outputLabel for="uname"><b>Nome de usuario</b></h:outputLabel>
-	    <h:inputText id="uname" value="#{estagiarioUtils.usuario.login}" placeholder="Digite nome do Usuario" required="true"/>
-	
-	    <h:outputLabel for="email"><b>E-mail</b></h:outputLabel>
-	    <h:inputText id="email" value="#{estagiarioUtils.usuario.email}" placeholder="Digite o e-mail" required="true"/>
-	    
-	    <h:outputLabel for="senha"><b>Senha</b></h:outputLabel>
-	    <h:inputText id="senha" value="#{estagiarioUtils.usuario.senha}" placeholder="Digite a senha" required="true"/>
-	    
-	    <h:outputLabel for="nomec"><b>Nome Completo</b></h:outputLabel>
-	    <h:inputText id="nomec" value="#{estagiarioUtils.estagiario.nomeCompleto}" placeholder="Digite o nome completo" required="true"/>
-		
-		<h:outputLabel for="cpf"><b>CPF</b></h:outputLabel>
-	    <p:inputMask  id="cpf" mask="999.999.999-99" value="#{estagiarioUtils.estagiario.cpf}" required="true"/>
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    template="/template.xhtml">
 
-	    <p:commandButton id="botao" value= "Criar" action="#{estagiarioUtils.persistEntity}" outcome="index" styleClass="botao"/>
-	  </div>
-	
-	  <div class="container">
-	  </div>
-	</h:form>
-</h:body>
-</html>
+        <ui:define name="general_content">
+			    <header class="masthead">
+			        <div class="container" style="margin-top: -5%;">
+			            <div class="row d-flex justify-content-center">
+			                <div class="col-12">
+			                    <div class="card p-3 py-4">
+			                        <div class="divider-custom divider-dark">
+			                            <div class="divider-custom-line"></div>
+			                            <div class="divider-custom-icon"><span> Criar Candidato </span></div>
+			                            <div class="divider-custom-line"></div>
+			                        </div>
+			                        
+			                        <form>
+			                            <div class="row">
+			                                <div class="form-group col">
+			                                    <h:outputLabel for="inputLogin">Login</h:outputLabel>
+			                                    <p:inputText id="inputLogin" type="text" class="form-control" value="#{estagiarioUtils.usuario.login}" a:placeholder="Login" required="true"/>
+			                                </div>
+			                                <div class="form-group col">
+			                                    <h:outputLabel for="inputPassword">Senha</h:outputLabel>
+			                                    <p:inputText id="inputPassword" type="password" class="form-control" value="#{estagiarioUtils.usuario.senha}" a:placeholder="Password" required="true"/>
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <div class="row">
+			                                <div class="form-group col">
+			                                    <h:outputLabel for="inputEmail">Email</h:outputLabel>
+			                                    <p:inputText id="inputEmail" type="email" class="form-control" value="#{estagiarioUtils.usuario.email}" a:placeholder="Email" required="true"/>
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <div class="row">    
+			                                <div class="form-group col-md-8">
+			                                    <h:outputLabel for="inputName">Nome Completo</h:outputLabel>
+			                                    <p:inputText id="inputName" type="text" class="form-control" value="#{estagiarioUtils.estagiario.nomeCompleto}" a:placeholder="Nome Completo" required="true"/>
+			                                </div>
+			                                <div class="form-group col-md-4">
+			                                    <h:outputLabel for="inputCPF"> CPF </h:outputLabel>
+			                                    <p:inputText id="inputCPF" type="text" class="form-control" value="#{estagiarioUtils.estagiario.cpf}" a:placeholder="xxx.xxx.xxx-xx" required="true"/>
+			                                    </div>
+			                            </div>
+			                            <br/>
+			                            <div class="row">
+			                                <div class="form-group col-md-4">
+				                                <h:outputLabel for="inputDate"> Data de Nascimento</h:outputLabel>
+				                                <p:inputText id="inputDate" type="date" class="form-control" value="#{estagiarioUtils.estagiario.dataNascimento}" required="true">
+				                                	<f:convertDateTime pattern="dd/MMM/yyyy" />
+				                                </p:inputText>
+				                                <!-- <p:datePicker id="inputDate" type="date" class="form-control" pattern="dd/MM/yyyy" value="#{estagiarioUtils.estagiario.dataNascimento}" /> -->
+			                                </div>
+			
+			                                <div class="form-group col-md-8">
+			                                    <h:outputLabel for="inputPlace">Instituição</h:outputLabel>
+			                                    <p:inputText id="inputPlace" type="text" class="form-control" value="#{estagiarioUtils.estagiario.local}" a:placeholder="Instituição de Trabalho ou Ensino" required="false"/>
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <p:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{estagiarioUtils.persistEntity}" outcome="index" style="width: 30%;"/>
+			                        </form>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </header>
+      		</ui:define>
+</ui:composition>
