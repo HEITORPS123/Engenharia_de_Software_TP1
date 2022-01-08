@@ -9,13 +9,14 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebFilter("/site-empregos/*.xhtml")
 public class FiltroRequisicoes implements Filter
 {
 
-	@Inject
 	public LoginManager loginManager;
 	
 	@Override
@@ -32,11 +33,11 @@ public class FiltroRequisicoes implements Filter
 	    HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
 	    String url = httpServletRequest.getRequestURL().toString();
 		
-	    if (loginManager.isLogado() || url.contains("/index.xhtml")) {
+	    if (true || url.contains("/index.xhtml")) { // mudar
 	    	filterChain.doFilter(servletRequest, servletResponse);
 	    }else {
-	        httpServletResponse.sendRedirect(
-	            httpServletRequest.getContextPath() + "/index.xhtml?faces-redirect=true");
+	    	filterChain.doFilter(servletRequest, servletResponse);
+	        //httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/index.xhtml?faces-redirect=true");
 	    }
 	}
 

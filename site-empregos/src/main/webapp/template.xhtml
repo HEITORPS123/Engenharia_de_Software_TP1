@@ -4,7 +4,7 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui"
     xmlns:pt="http://java.sun.com/jsf/passthrough">
-    
+
     <h:head>
  		<meta charset="utf-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -34,12 +34,53 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Vagas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#footer">Sobre</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Login</a></li>
+                        <li onclick="document.getElementById('id01').style.display='block'" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Login
+                        </a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-	  
+	  	
+	  	 <!-- Login Modal -->
+        <div id="id01" class="card modal bg-white cemter-screen">
+            <span onclick="document.getElementById('id01').style.display='none'"
+            class="close" title="Close Modal"></span>
+
+            <!-- Modal Content -->
+            <div class="container text-center" style="width: 200px;">
+                <img src="assets/img/profile.png" alt="Avatar" class="avatar"/>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-1 col-lg-2"></div>
+                <div class="col">
+                    <h:form>
+                        <div class="form-group" style = "margin-top: 5%;">
+                        <h:outputLabel for="exampleInputEmail1" value="Login"/>
+                        <h:inputText type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter login" value="#{loginManager.login}"/>
+                        </div>
+                        <div class="form-group" style = "margin-top: 5%;">
+                        <h:outputLabel for="exampleInputPassword1" value="Senha"/>
+                        <h:inputText type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="#{loginManager.senha}"/>
+                        </div>
+                        <div class="form-check">
+                        </div>
+                        <p:commandButton class="btn btn-primary" style="width: 30%;" value="Enviar" action="#{loginManager.login()}"/>
+                        <br></br>
+                        <br></br>
+                        <h:link id="link1" outcome="WIP/addestagiario.xhtml" style="margin-right:20px;">
+		            		<h:outputText value="Criar estagiário"/>
+			        	</h:link>
+			        	
+			        	<h:link id="link2" outcome="WIP/addempresa.xhtml" style="margin-right:20px;">
+			            	<h:outputText value="Criar empresa"/>
+			        	</h:link>
+                    </h:form>
+                </div>
+                <div class="col-sm-1 col-lg-2"></div>
+            </div>
+        </div>
+        
 	  	<ui:insert name="general_content" />
 	  	
 	  	<!-- Footer-->

@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+	
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12">
+                        <div class="card p-3 py-4">
+                            <div class = "text-center">
+                                <div class="divider-custom divider-dark">
+                                    <div class="divider-custom-icon"><span> Empresa </span></div>
+                                </div>
+                                <div class="text-center"> <img src="https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg" width="100" class="rounded-circle"/> </div>
+                                    <h5 class="mt-2 mb-0"> #{vagaUtils.vaga.empresa.nomeComercial} </h5> <span> #{vagaUtils.vaga.nome} </span>
+                                    <div class="px-4 mt-1">
+                                        <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                    </div>
+                            </div>
+                                <div class="divider-custom divider-dark">
+                                    <div class="divider-custom-line"></div>
+                                    <div class="divider-custom-icon"><span> Descrição da Vaga </span></div>
+                                    <div class="divider-custom-line"></div>
+                                </div>
+                                <div class = "row">
+                                    <div class="col-2"></div>
+                                    
+                                    <div class = "col text-left list-info"> 
+                                        <ul class="list-unstyled">
+                                            <li> <i class="fas fa-map-marker-alt"></i> <b> : </b> #{vagaUtils.vaga.local} </li>
+                                            <li> <i class="fas fa-money-bill"></i> <b> : </b> R$ #{vagaUtils.vaga.salario} </li>
+                                            <li> <i class="fas fa-hourglass-half"></i> <b> : </b> #{vagaUtils.vaga.cargaHoraria} hs </li>
+                                            <li> <i class="fas fa-briefcase"></i> <b> : </b> #{vagaUtils.vaga.posicao} </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class = "col" style = "font-size: 20px;">
+                                        <h4 class = "text-center"> Requisitos </h4>
+                                        <ul>
+                                            <li> Conhecimento em Python </li>
+                                            <li> Boa Lógica de Programação </li>
+                                            <li> Familiaridade com ambiente Git </li>
+                                            <li> Experiência com AWS </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-2"></div>
+                                </div>
+
+                                <div class = "row">
+                                    <div class="col-2"></div>
+
+                                    <div class = "col text-center">
+                                        <h4> Sobre </h4>
+                                        <p> #{vagaUtils.vaga.descricao} </p>
+                                    </div>
+
+                                    <div class="col-2"></div>
+                                </div>
+
+
+                                <div class="buttons text-center"> <button class="btn btn-outline-primary px-4"> Aplicar </button>  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </header>
+</ui:composition>

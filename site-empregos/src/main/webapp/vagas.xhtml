@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    template="/template.xhtml">
+
+   	<ui:define name="general_content">
+	   	<p:outputPanel id="pagina">
+	   		<p:outputPanel id="paginaViz" rendered="#{!vagaUtils.telaInfo}">
+	   			<ui:include src="/pesquisaVagas.xhtml" />
+	   		</p:outputPanel>
+	   		
+	   		<p:outputPanel id="paginaInfo" rendered="#{vagaUtils.telaInfo}">
+	   			<ui:include src="/infoVagas.xhtml" />
+	   		</p:outputPanel>
+	   	</p:outputPanel>
+    </ui:define>
+</ui:composition>

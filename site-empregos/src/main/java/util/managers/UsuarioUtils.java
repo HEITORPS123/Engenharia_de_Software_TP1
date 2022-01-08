@@ -58,7 +58,7 @@ public class UsuarioUtils implements EntityUtils<Usuario>
 	@Override
 	public Usuario searchEntityByName(String nome)
 	{
-		Query query = entityManager.createQuery("SELECT e FROM usuario e WHERE e.login = ?1", Usuario.class).setParameter(1, nome);
+		Query query = entityManager.createQuery("SELECT e FROM Usuario e WHERE e.login = ?1", Usuario.class).setParameter(1, nome);
 		return (Usuario) query.getSingleResult();
 	}
 

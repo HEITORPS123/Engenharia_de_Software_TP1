@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,7 +15,7 @@ import entidades.Empresa;
 import entidades.Usuario;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class EmpresaUtils implements EntityUtils<Empresa>
 {
 	private EntityManagerFactory entityManagerFactory;
