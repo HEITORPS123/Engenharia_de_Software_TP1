@@ -31,6 +31,8 @@ public class Estagiario implements Serializable
 	
 	private Date dataNascimento;
 	
+	private String local;
+	
 	@OneToOne(mappedBy = "estagiario", cascade = CascadeType.PERSIST,
             fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name="estagiario_id")
@@ -111,5 +113,13 @@ public class Estagiario implements Serializable
 	public void setAplicacoes(List<Aplicacao> aplicacoes)
 	{
 		this.aplicacoes = aplicacoes;
+	}
+
+	public String getLocal() {
+		return local;
+	}
+
+	public void setLocal(String local) {
+		this.local = local;
 	}
 }
