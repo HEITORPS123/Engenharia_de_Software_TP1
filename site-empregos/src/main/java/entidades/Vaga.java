@@ -25,7 +25,7 @@ public class Vaga implements Serializable
 	
 	private String nome;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	private Empresa empresa;
 	
 	private String descricao;

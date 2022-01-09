@@ -2,13 +2,18 @@ package util.managers;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 
 import entidades.Estagiario;
 import entidades.Usuario;
@@ -17,39 +22,52 @@ import entidades.Usuario;
 @SessionScoped
 public class EstagiarioUtils implements EntityUtils<Estagiario>
 {
-	private EntityManagerFactory entityManagerFactory;
+	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Resource
+	private UserTransaction transaction;
+	
 	private Estagiario estagiario;
 	private Usuario usuario;
 	
 	private List<Estagiario> listaEntidades;
 	
 	public EstagiarioUtils() {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("site-empregos");
-		this.entityManager = entityManagerFactory.createEntityManager();
 		this.estagiario = new Estagiario();
+		this.usuario = new Usuario();
 	}
 	
 	@Override
-	public void persistEntity()
+	public String persistEntity()
 	{
-		EntityTransaction transactionObj = entityManager.getTransaction();
-		if(!transactionObj.isActive()) {
-			transactionObj.begin();
-	    }
-		usuario.setEstagiario(estagiario);
-		estagiario.setUsuario(usuario);
-		entityManager.persist(estagiario);
-		transactionObj.commit();
-		this.estagiario = new Estagiario();
-		this.usuario = new Usuario();
+		System.out.println("AAAAAAAAAAAA");
+
+		try{
+			transaction.begin();
+	
+			usuario.setEstagiario(estagiario);
+			estagiario.setUsuario(usuario);
+			entityManager.persist(estagiario);
+			transaction.commit();
+			this.estagiario = new Estagiario();
+			this.usuario = new Usuario();
+			return "/index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    return "/index.xhtml?faces-redirect=true";
+		}
 	}
 
 	@Override
 	public void removeEntity(Long id)
 	{
-		entityManager.remove(this.searchEntity(id));
-		entityManager.getTransaction().commit();
+		try {
+			entityManager.remove(this.searchEntity(id));
+			transaction.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

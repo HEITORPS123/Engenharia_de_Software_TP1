@@ -2,23 +2,33 @@ package util.managers;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.UserTransaction;
 
 import entidades.Empresa;
+import entidades.Usuario;
 import entidades.Vaga;
+import seguranca.LoginManager;
 
 @ManagedBean
 @ViewScoped
 public class VagaUtils implements EntityUtils<Vaga>
 {
-	private EntityManagerFactory entityManagerFactory;
+	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Resource
+	private UserTransaction transaction;
+	
 	private Vaga vaga;
 	
 	private List<Vaga> listaEntidades;
@@ -26,16 +36,22 @@ public class VagaUtils implements EntityUtils<Vaga>
 	private boolean telaInfo = false;
 	
 	public VagaUtils() {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("site-empregos");
-		this.entityManager = entityManagerFactory.createEntityManager();
 		this.vaga = new Vaga();
 	}
 	
-	@Override
-	public void persistEntity()
+	public String persistEntity(Empresa empresa)
 	{
-		// TODO Auto-generated method stub
-		
+		try{
+			transaction.begin();
+			vaga.setEmpresa(empresa);
+			entityManager.persist(vaga);
+			transaction.commit();
+			this.vaga = new Vaga();
+			return "/index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    return "/index.xhtml?faces-redirect=true";
+		}
 	}
 
 	@Override
@@ -97,12 +113,22 @@ public class VagaUtils implements EntityUtils<Vaga>
 
 	public Vaga getVaga()
 	{
+		if(vaga == null) {
+			this.vaga = new Vaga();
+		}
 		return vaga;
 	}
 
 	public void setVaga(Vaga vaga)
 	{
 		this.vaga = vaga;
+	}
+
+	@Override
+	public String persistEntity()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

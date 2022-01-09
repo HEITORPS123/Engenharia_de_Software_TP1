@@ -2,22 +2,24 @@ package seguranca;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateful;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import entidades.Empresa;
 import entidades.Usuario;
 import util.managers.UsuarioUtils;
 
+@SuppressWarnings("deprecation")
 @ManagedBean
 @SessionScoped
-public class LoginManager implements Serializable
+public class LoginManager
 {
-	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private UsuarioUtils usuarioUtils;
@@ -36,9 +38,13 @@ public class LoginManager implements Serializable
 			usuario = null;
 			return null;
 		} else {
-			context.getExternalContext().getSessionMap().put("usuario", usuario);
 			return "/index.xhtml?faces-redirect=true";
 		}
+	}
+	
+	public String logout() {
+		usuario = null;
+		return "/index.xhtml?faces-redirect=true";
 	}
 	
 	public String getLogin()
@@ -68,5 +74,33 @@ public class LoginManager implements Serializable
 		}else{
 			return true;
 		}
+	}
+	
+	public boolean isEmpresa() {
+		if(isLogado()) {
+			if(usuario.getEmpresa() == null) {
+				return false;
+			}else {
+				return true;
+			}
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean isEstagiario() {
+		if(isLogado()) {
+			if(usuario.getEstagiario() == null) {
+				return false;
+			}else {
+				return true;
+			}
+		}else {
+			return false;
+		}
+	}
+	
+	public Empresa getEmpresa() {
+		return usuario.getEmpresa();
 	}
 }

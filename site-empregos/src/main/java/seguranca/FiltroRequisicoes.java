@@ -17,8 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 public class FiltroRequisicoes implements Filter
 {
 
-	public LoginManager loginManager;
-	
 	@Override
 	public void destroy()
 	{

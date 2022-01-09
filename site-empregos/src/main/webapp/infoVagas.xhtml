@@ -61,8 +61,11 @@
                                     <div class="col-2"></div>
                                 </div>
 
-
-                                <div class="buttons text-center"> <button class="btn btn-outline-primary px-4"> Aplicar </button>  </div>
+								<p:outputPanel id="botaoAdicionarVaga" rendered="#{loginManager.isEstagiario()}">
+	                    			<h:form>
+	                    				<h:commandLink type="button" class="btn btn-outline-primary px-4" value="Aplicar" action="" style="font-size: 30px;" />
+	                            	</h:form>
+                            	</p:outputPanel>
                             </div>
                         </div>
                     </div>

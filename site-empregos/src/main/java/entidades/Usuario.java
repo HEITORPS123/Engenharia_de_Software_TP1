@@ -27,11 +27,11 @@ public class Usuario implements Serializable
 	
 	private String senha;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estagiario_id")
 	private Estagiario estagiario;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "empresa_id")
 	private Empresa empresa;
 	

@@ -18,33 +18,38 @@
 			                            <div class="divider-custom-line"></div>
 			                        </div>
 			                        
-			                        <form>
+			                        <h:form id="formularioCadastro">
 			                            <div class="row">
 			                                <div class="form-group col">
+			                                	<h:messages id="mensagensLogin" for="inputLogin" style="color:red" />
 			                                    <h:outputLabel for="inputLogin">Login</h:outputLabel>
-			                                    <p:inputText id="inputLogin" type="text" class="form-control" value="#{estagiarioUtils.usuario.login}" a:placeholder="Login" required="true"/>
+			                                    <p:inputText id="inputLogin" type="text" class="form-control" value="#{estagiarioUtils.usuario.login}" a:placeholder="Login" required="true" requiredMessage="Campo obrigatório"  />
 			                                </div>
 			                                <div class="form-group col">
-			                                    <h:outputLabel for="inputPassword">Senha</h:outputLabel>
-			                                    <p:inputText id="inputPassword" type="password" class="form-control" value="#{estagiarioUtils.usuario.senha}" a:placeholder="Password" required="true"/>
+			                                	<h:messages id="mensagensSenha" for="inputSenha" style="color:red" />
+			                                    <h:outputLabel for="inputSenha">Senha</h:outputLabel>
+			                                    <p:inputText id="inputSenha" type="password" class="form-control" value="#{estagiarioUtils.usuario.senha}" a:placeholder="Password" required="true" requiredMessage="Campo obrigatório"  />
 			                                </div>
 			                            </div>
 			                            <br/>
 			                            <div class="row">
 			                                <div class="form-group col">
+			                                	<h:messages id="mensagensEmail" for="inputEmail" style="color:red" />
 			                                    <h:outputLabel for="inputEmail">Email</h:outputLabel>
-			                                    <p:inputText id="inputEmail" type="email" class="form-control" value="#{estagiarioUtils.usuario.email}" a:placeholder="Email" required="true"/>
+			                                    <p:inputText id="inputEmail" type="email" class="form-control" value="#{estagiarioUtils.usuario.email}" a:placeholder="Email" required="true" requiredMessage="Campo obrigatório"  />
 			                                </div>
 			                            </div>
 			                            <br/>
 			                            <div class="row">    
 			                                <div class="form-group col-md-8">
-			                                    <h:outputLabel for="inputName">Nome Completo</h:outputLabel>
-			                                    <p:inputText id="inputName" type="text" class="form-control" value="#{estagiarioUtils.estagiario.nomeCompleto}" a:placeholder="Nome Completo" required="true"/>
+			                                	<h:messages id="mensagensNome" for="inputNome" style="color:red" />
+			                                    <h:outputLabel for="inputNome">Nome Completo</h:outputLabel>
+			                                    <p:inputText id="inputNome" type="text" class="form-control" value="#{estagiarioUtils.estagiario.nomeCompleto}" a:placeholder="Nome Completo" required="true" requiredMessage="Campo obrigatório"  />
 			                                </div>
 			                                <div class="form-group col-md-4">
+			                                	<h:messages id="mensagensCPF" for="inputCPF" style="color:red" />
 			                                    <h:outputLabel for="inputCPF"> CPF </h:outputLabel>
-			                                    <p:inputText id="inputCPF" type="text" class="form-control" value="#{estagiarioUtils.estagiario.cpf}" a:placeholder="xxx.xxx.xxx-xx" required="true"/>
+			                                    <p:inputText id="inputCPF" type="text" class="form-control" value="#{estagiarioUtils.estagiario.cpf}" a:placeholder="xxx.xxx.xxx-xx" required="true" requiredMessage="Campo obrigatório" />
 			                                    </div>
 			                            </div>
 			                            <br/>
@@ -63,8 +68,8 @@
 			                                </div>
 			                            </div>
 			                            <br/>
-			                            <p:commandButton styleClass="btn btn-primary" value="Cadastrar" action="#{estagiarioUtils.persistEntity}" outcome="index" style="width: 30%;"/>
-			                        </form>
+			                            <p:commandButton styleClass="btn btn-primary" value="Cadastrar" process="@this inputLogin inputSenha inputEmail inputNome inputCPF inputPlace" update="mensagensLogin mensagensSenha mensagensEmail mensagensNome mensagensCPF" action="#{estagiarioUtils.persistEntity}" style="width: 30%;"/>
+			                        </h:form>
 			                    </div>
 			                </div>
 			            </div>

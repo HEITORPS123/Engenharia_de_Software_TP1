@@ -2,6 +2,7 @@ package util.managers;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
@@ -9,7 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.UserTransaction;
 
 import entidades.Empresa;
 import entidades.Usuario;
@@ -18,45 +21,56 @@ import entidades.Usuario;
 @ViewScoped
 public class EmpresaUtils implements EntityUtils<Empresa>
 {
-	private EntityManagerFactory entityManagerFactory;
+	@PersistenceContext
 	private EntityManager entityManager;
+	
+	@Resource
+	private UserTransaction transaction;
+	
 	private Empresa empresa;
 	private Usuario usuario;
 	
 	private List<Empresa> listaEntidades;
 	
 	public EmpresaUtils() {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("site-empregos");
-		this.entityManager = entityManagerFactory.createEntityManager();
-		this.empresa = new Empresa();
+
 	}
 	
 	@Override
-	public void persistEntity()
+	public String persistEntity()
 	{
-		EntityTransaction transactionObj = entityManager.getTransaction();
-		if(!transactionObj.isActive()) {
-			transactionObj.begin();
-	    }
-		usuario.setEmpresa(empresa);
-		empresa.setUsuario(usuario);
-		entityManager.persist(empresa);
-		transactionObj.commit();
-		this.empresa = new Empresa();
-		this.usuario = new Usuario();
+		System.out.println(empresa.getNomeComercial());
+		
+		try{
+			transaction.begin();
+			usuario.setEmpresa(empresa);
+			empresa.setUsuario(usuario);
+			entityManager.persist(empresa);
+			transaction.commit();
+			this.empresa = new Empresa();
+			this.usuario = new Usuario();
+			return "/index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    return "/index.xhtml?faces-redirect=true";
+		}
 	}
 
 	@Override
 	public void removeEntity(Long id)
 	{
-		entityManager.remove(this.searchEntity(id));
-		entityManager.getTransaction().commit();
+		try {
+			entityManager.remove(this.searchEntity(id));
+			transaction.commit();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<Empresa> getAllEntities()
 	{
-		Query query = entityManager.createQuery("SELECT e FROM empresa e",Empresa.class);
+		Query query = entityManager.createQuery("SELECT e FROM Empresa e",Empresa.class);
 		return query.getResultList();
 	}
 
@@ -89,6 +103,7 @@ public class EmpresaUtils implements EntityUtils<Empresa>
 	public Empresa getEmpresa()
 	{
 		if(empresa == null) {
+			System.out.println("aaaa");
 			this.empresa = new Empresa();
 		}
 		return empresa;

@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    template="/template.xhtml">
+
+        <ui:define name="general_content">
+			    <header class="masthead">
+			        <div class="container" style="margin-top: -5%;">
+			            <div class="row d-flex justify-content-center">
+			                <div class="col-12">
+			                    <div class="card p-3 py-4">
+			                        <div class="divider-custom divider-dark">
+			                            <div class="divider-custom-line"></div>
+			                            <div class="divider-custom-icon"><span> Criar Empresa </span></div>
+			                            <div class="divider-custom-line"></div>
+			                        </div>
+			                        
+			                        <h:form id="formularioCadastro">
+			                            <div class="row">
+			                                <div class="form-group col">
+			                                	<h:messages id="mensagensLogin" for="inputLogin" style="color:red" />
+			                                    <h:outputLabel for="inputLogin">Login</h:outputLabel>
+			                                    <p:inputText id="inputLogin" type="text" class="form-control" value="#{empresaUtils.usuario.login}" a:placeholder="Login" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                                <div class="form-group col">
+			                                	<h:messages id="mensagensSenha" for="inputPassword" style="color:red" />
+			                                    <h:outputLabel for="inputPassword">Senha</h:outputLabel>
+			                                    <p:inputText id="inputPassword" type="password" class="form-control" value="#{empresaUtils.usuario.senha}" a:placeholder="Password" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <div class="row">
+			                                <div class="form-group col">
+			                                	<h:messages id="mensagensEmail" for="inputEmail" style="color:red" />
+			                                    <h:outputLabel for="inputEmail">Email</h:outputLabel>
+			                                    <p:inputText id="inputEmail" type="email" class="form-control" value="#{empresaUtils.usuario.email}" a:placeholder="Email" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <div class="row">    
+			                                <div class="form-group col-md-8">
+			                                	<h:messages id="mensagensNome" for="inputName" style="color:red" />
+			                                    <h:outputLabel for="inputName">Nome Comercial</h:outputLabel>
+			                                    <p:inputText id="inputName" type="text" class="form-control"  value="#{empresaUtils.empresa.nomeComercial}" a:placeholder="Nome Comercial" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                                <div class="form-group col-md-4">
+			                                	<h:messages id="mensagensCNPJ" for="inputCNPJ" style="color:red" />
+			                                    <h:outputLabel for="inputCNPJ"> CNPJ </h:outputLabel>
+			                                    <p:inputText id="inputCNPJ" type="text" class="form-control" value="#{empresaUtils.empresa.cnpj}" a:placeholder="XX.XXX.XXX/XXXX-XX" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                            </div>
+			                            <br/>
+		                                <div class="form-group col">
+		                                    <h:outputLabel for="inputDescricao">Descrição</h:outputLabel>
+		                                    <p:inputTextarea row = "10" col = "10" id="inputDescricao" type="text" class="form-control" value="#{empresaUtils.empresa.descricao}" a:placeholder="Descrição" required="false" />
+		                                </div>
+			                            <br/>
+			                            <div class="row">
+			                                <div class="form-group col-md-8">
+			                                    <h:outputLabel for="inputSetor">Setor</h:outputLabel>
+			                                    <p:inputText id="inputSetor" type="text" class="form-control" value="#{empresaUtils.empresa.setor}" a:placeholder="Setor" required="false" />
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <p:commandButton id="botaoCadastro" styleClass="btn btn-primary" value="Cadastrar" process="@this inputLogin inputPassword inputEmail inputName inputCNPJ inputDescricao inputSetor" update="mensagensLogin mensagensSenha mensagensEmail mensagensNome mensagensCNPJ" action="#{empresaUtils.persistEntity}" style="width: 30%;"/>
+			                        </h:form>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </header>
+      		</ui:define>
+</ui:composition>

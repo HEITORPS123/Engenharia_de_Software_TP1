@@ -26,16 +26,21 @@
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="#page-top"> site-empregos </a>
-                <h:button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </h:button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Vagas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#footer">Sobre</a></li>
-                        <li onclick="document.getElementById('id01').style.display='block'" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Login
-                        </a></li>
+                        <p:outputPanel id="loginButton" rendered="#{!loginManager.isLogado()}">
+	                        <li onclick="document.getElementById('id01').style.display='block'" class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Login
+	                        </a></li>
+                        </p:outputPanel>
+                        <p:outputPanel id="logoutButton" rendered="#{loginManager.isLogado()}" >
+                        	<h:form id="logout" >
+	                        	<li class="nav-item mx-0 mx-lg-1">
+	                        		<p:commandLink class="nav-link py-3 px-0 px-lg-3 rounded" value="Logout" action="#{loginManager.logout()}" />
+	                        	</li>
+                        	</h:form>
+                        </p:outputPanel>
                     </ul>
                 </div>
             </div>
@@ -43,9 +48,12 @@
 	  	
 	  	 <!-- Login Modal -->
         <div id="id01" class="card modal bg-white cemter-screen">
-            <span onclick="document.getElementById('id01').style.display='none'"
-            class="close" title="Close Modal"></span>
-
+        	
+            <h:commandLink onclick="document.getElementById('id01').style.display='none'"
+            class="close" title="Close Modal">
+            	<i class="fa fa-times"></i>
+            </h:commandLink>
+            
             <!-- Modal Content -->
             <div class="container text-center" style="width: 200px;">
                 <img src="assets/img/profile.png" alt="Avatar" class="avatar"/>
@@ -54,7 +62,7 @@
             <div class="row">
                 <div class="col-sm-1 col-lg-2"></div>
                 <div class="col">
-                    <h:form>
+                    <h:form id="login" >
                         <div class="form-group" style = "margin-top: 5%;">
                         <h:outputLabel for="exampleInputEmail1" value="Login"/>
                         <h:inputText type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter login" value="#{loginManager.login}"/>
@@ -68,11 +76,11 @@
                         <p:commandButton class="btn btn-primary" style="width: 30%;" value="Enviar" action="#{loginManager.login()}"/>
                         <br></br>
                         <br></br>
-                        <h:link id="link1" outcome="WIP/addestagiario.xhtml" style="margin-right:20px;">
+                        <h:link id="link1" outcome="/addestagiario.xhtml" style="margin-right:20px;">
 		            		<h:outputText value="Criar estagiário"/>
 			        	</h:link>
 			        	
-			        	<h:link id="link2" outcome="WIP/addempresa.xhtml" style="margin-right:20px;">
+			        	<h:link id="link2" outcome="/addempresa.xhtml" style="margin-right:20px;">
 			            	<h:outputText value="Criar empresa"/>
 			        	</h:link>
                     </h:form>

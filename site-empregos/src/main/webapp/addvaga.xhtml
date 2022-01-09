@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    template="/template.xhtml">
+    <ui:define name="general_content">
+    	  <header class="masthead">
+	        <div class="container" style="margin-top: -5%;">
+	            <div class="row d-flex justify-content-center">
+	                <div class="col-12">
+	                    <div class="card p-3 py-4">
+	                        <div class="divider-custom divider-dark">
+	                            <div class="divider-custom-line"></div>
+	                            <div class="divider-custom-icon"><span> Criar Vaga </span></div>
+	                            <div class="divider-custom-line"></div>
+	                        </div>
+	                        
+	                        <h:form id="formularioCadastro">
+			                            <div class="row">
+			                                <div class="form-group col">
+			                                	<h:messages id="mensagensNome" for="inputNome" style="color:red" />
+			                                    <h:outputLabel for="inputNome">Nome da Vaga</h:outputLabel>
+			                                    <p:inputText id="inputNome" type="text" class="form-control" value="#{vagaUtils.vaga.nome}" a:placeholder="Nome da Vaga" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                            </div>
+			                             <br/>
+		                                <div class="form-group col">
+		                                    <h:outputLabel for="inputDescricao">Descrição</h:outputLabel>
+		                                    <p:inputTextarea row = "10" col = "10" id="inputDescricao" type="text" class="form-control" value="#{vagaUtils.vaga.descricao}" a:placeholder="Descrição" required="false" />
+		                                </div>
+			                            <br/>
+			                            <div class="row">
+			                                <div class="form-group col">
+			                                	<h:messages id="mensagensLocal" for="inputLocal" style="color:red" />
+			                                    <h:outputLabel for="inputLocal">Local</h:outputLabel>
+			                                    <p:inputText id="inputLocal" type="text" class="form-control" value="#{vagaUtils.vaga.local}" a:placeholder="Local" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <div class="row">    
+			                                <div class="form-group col-md-8">
+			                                	<h:messages id="mensagensPosicao" for="inputPosicao" style="color:red" />
+			                                    <h:outputLabel for="inputPosicao">Nome da Posição</h:outputLabel>
+			                                    <p:inputText id="inputPosicao" type="text" class="form-control" value="#{vagaUtils.vaga.posicao}" a:placeholder="Nome Completo" required="true" requiredMessage="Campo obrigatório" />
+			                                </div>
+			                                <div class="form-group col-md-4">
+			                                	<h:messages id="mensagensHoras" for="cargaHoraria" style="color:red" />
+			                                	 <h:outputLabel for="cargaHoraria">Carga Horária</h:outputLabel>
+			                                    <p:inputText id="cargaHoraria" type="text" class="form-control" value="#{vagaUtils.vaga.cargaHoraria}" a:placeholder="Carga Horária" required="true" requiredMessage="Campo obrigatório" >    
+			                                		<f:convertNumber integerOnly="true" minIntegerDigits="1"  />
+			                                	</p:inputText>
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <div class="row">
+			                                <div class="form-group col-md-4">
+			                                	<h:messages id="mensagensSalario" for="salario" style="color:red" />
+				                                <h:outputLabel for="salario">Salário</h:outputLabel>
+			                                    <p:inputText id="salario" type="text" class="form-control" value="#{vagaUtils.vaga.salario}" a:placeholder="Salário (R$)" required="true" requiredMessage="Campo obrigatório" >    
+			                                		<f:convertNumber maxFractionDigits="2"/>
+			                                	</p:inputText>
+			                                </div>
+			
+			                                <div class="form-group col-md-4">
+			                                	<h:messages id="mensagensNumero" for="numeroVagas" style="color:red" />
+			                                   <h:outputLabel for="numeroVagas">Número de Vagas</h:outputLabel>
+			                                    <p:inputText id="numeroVagas" type="text" class="form-control" value="#{vagaUtils.vaga.numeroRestante}" a:placeholder="Número de Vagas" required="true" requiredMessage="Campo obrigatório" >    
+			                                		<f:convertNumber integerOnly="true" minIntegerDigits="1"  />
+			                                	</p:inputText>
+			                                </div>
+			                            </div>
+			                            <br/>
+			                            <p:commandButton styleClass="btn btn-primary" value="Cadastrar" process="@this inputNome inputDescricao inputLocal inputPosicao cargaHoraria salario numeroVagas" update="mensagensNome mensagensLocal mensagensPosicao mensagensHoras mensagensSalario mensagensNumero" action="#{vagaUtils.persistEntity(loginManager.getEmpresa())}" style="width: 30%;"/>
+			                        </h:form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </header>
+    </ui:define>
+</ui:composition>

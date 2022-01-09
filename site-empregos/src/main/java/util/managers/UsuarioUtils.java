@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import entidades.Usuario;
@@ -16,7 +17,7 @@ import entidades.Usuario;
 @RequestScoped
 public class UsuarioUtils implements EntityUtils<Usuario>
 {
-	private EntityManagerFactory entityManagerFactory;
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	private Usuario usuario;
@@ -24,13 +25,11 @@ public class UsuarioUtils implements EntityUtils<Usuario>
 	private List<Usuario> listaEntidades;
 	
 	public UsuarioUtils() {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("site-empregos");
-		this.entityManager = entityManagerFactory.createEntityManager();
 		this.usuario = new Usuario();
 	}
 	
 	@Override
-	public void persistEntity()
+	public String persistEntity()
 	{
 		EntityTransaction transactionObj = entityManager.getTransaction();
 		if(!transactionObj.isActive()) {
@@ -39,6 +38,7 @@ public class UsuarioUtils implements EntityUtils<Usuario>
 		entityManager.persist(usuario);
 		transactionObj.commit();
 		this.usuario = new Usuario();
+		return "/index.xhtml?faces-redirect=true";
 	}
 
 	@Override

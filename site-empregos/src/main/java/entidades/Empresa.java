@@ -30,7 +30,7 @@ public class Empresa implements Serializable
 	private String cnpj;
 	
 	@OneToOne(mappedBy = "empresa", cascade = CascadeType.PERSIST,
-            fetch = FetchType.LAZY, optional = false)
+            fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name="empresa_id")
 	private Usuario usuario;
 	
@@ -51,6 +51,7 @@ public class Empresa implements Serializable
 	
 	public void setNomeComercial(String nomeComercial)
 	{
+		System.out.println("mano");
 		this.nomeComercial = nomeComercial;
 	}
 	
