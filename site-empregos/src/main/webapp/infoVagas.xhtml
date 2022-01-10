@@ -88,13 +88,13 @@
 	            	<ui:repeat var="a" value="#{vagaUtils.listaAplicacoes}" >
 	                    <div class="col-md-6 col-lg-4 mb-5">
 	                        <div class="mt-2 d-flex justify-content-center">
-	                            <div class="card p-3">
+	                            <div class="card p-3" style="width:100%;" >
 	                                <div class="d-flex align-items-center">
 	                                    <div class="image"> <img src="data:image/png;base64, #{a.estagiario.imagem}" class="rounded" width="155" /> </div>
 	                                    <div class="ml-3 w-100" style = "margin-left: 5%;">
 	                                        <h4 class="mb-0 mt-0"> #{a.estagiario.nomeCompleto} </h4> 
 	                                        <span>#{a.estagiario.local}</span>
-	                                        <div class="button mt-2 d-flex flex-row align-items-center">
+	                                        <div class="button mt-2 align-items-center">
 	                                        <h:form>
 	                                        <p:commandLink
 	                                        	class="btn btn-info text-light w-50"
