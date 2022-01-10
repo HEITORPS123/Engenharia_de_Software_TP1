@@ -1,5 +1,8 @@
 package util.managers;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -7,6 +10,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -59,6 +63,11 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 			if(conteudo != null) {
 				estagiario.setImagem(conteudo);
 				conteudo = null;
+			}else {
+				BufferedImage bImage = ImageIO.read(new File("/home/heitor/Desktop/keanu.jpg"));
+			    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			    ImageIO.write(bImage, "jpg", bos );
+			    estagiario.setImagem(bos.toByteArray());
 			}
 			entityManager.persist(estagiario);
 			transaction.commit();

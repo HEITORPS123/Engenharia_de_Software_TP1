@@ -78,6 +78,12 @@ public class VagaUtils implements EntityUtils<Vaga>
 		}
 	}
 
+	public List<Vaga> listarVagasPorEmpresa(Empresa empresa){
+		Query query = entityManager.createQuery("SELECT v FROM Vaga v WHERE v.empresa.id = :empresaId",Vaga.class);
+		query.setParameter("empresaId", empresa.getId());
+		return query.getResultList();
+	}
+	
 	public String removeEntity(Long id)
 	{
 		try {

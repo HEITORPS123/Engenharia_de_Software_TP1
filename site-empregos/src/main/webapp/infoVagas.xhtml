@@ -14,10 +14,10 @@
                                 <div class="divider-custom divider-dark">
                                     <div class="divider-custom-icon"><span> Empresa </span></div>
                                 </div>
-                                <div class="text-center"> <img src="" width="100" class="rounded-circle" /> </div>
+                                <div class="text-center"> <img src="data:image/png;base64, #{vagaUtils.vaga.empresa.imagem}" width="100" class="rounded-circle" /> </div>
                                     <h5 class="mt-2 mb-0"> #{vagaUtils.vaga.empresa.nomeComercial} </h5> <span> #{vagaUtils.vaga.nome} </span>
                                     <div class="px-4 mt-1">
-                                        <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                        <p class="fonts">#{vagaUtils.vaga.empresa.descricao} </p>
                                     </div>
                             </div>
                                 <div class="divider-custom divider-dark">
@@ -28,23 +28,21 @@
                                 <div class = "row">
                                     <div class="col-2"></div>
                                     
-                                    <div class = "col text-left list-info"> 
-                                        <ul class="list-unstyled">
-                                            <li> <i class="fas fa-map-marker-alt"></i> <b> : </b> #{vagaUtils.vaga.local} </li>
-                                            <li> <i class="fas fa-money-bill"></i> <b> : </b> R$ #{vagaUtils.vaga.salario} </li>
-                                            <li> <i class="fas fa-hourglass-half"></i> <b> : </b> #{vagaUtils.vaga.cargaHoraria} hs </li>
-                                            <li> <i class="fas fa-briefcase"></i> <b> : </b> #{vagaUtils.vaga.posicao} </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class = "col" style = "font-size: 20px;">
-                                        <h4 class = "text-center"> Requisitos </h4>
-                                        <ul>
-                                            <li> Conhecimento em Python </li>
-                                            <li> Boa Lógica de Programação </li>
-                                            <li> Familiaridade com ambiente Git </li>
-                                            <li> Experiência com AWS </li>
-                                        </ul>
+                                    <div class = "col text-left list-info">
+                                    	<div class="row"> 
+                                    		<div class="col">
+		                                        <ul class="list-unstyled">
+			                                            <li> <i class="fas fa-map-marker-alt"></i> <b> : </b> #{vagaUtils.vaga.local} </li>
+			                                            <li> <i class="fas fa-money-bill"></i> <b> : </b> R$ #{vagaUtils.vaga.salario} </li>
+			                    				</ul>
+		                    				</div>
+		                    				<div class="col">
+			                    				<ul class="list-unstyled">
+			                                            <li> <i class="fas fa-hourglass-half"></i> <b> : </b> #{vagaUtils.vaga.cargaHoraria} hs </li>
+			                                            <li> <i class="fas fa-briefcase"></i> <b> : </b> #{vagaUtils.vaga.posicao} </li>
+		                                        </ul>
+	                                        </div>
+                                        </div>
                                     </div>
 
                                     <div class="col-2"></div>

@@ -1,5 +1,8 @@
 package util.managers;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -8,6 +11,7 @@ import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
+import javax.imageio.ImageIO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -56,6 +60,11 @@ public class EmpresaUtils implements EntityUtils<Empresa>
 			if(conteudo != null) {
 				empresa.setImagem(conteudo);
 				conteudo = null;
+			}else {
+				BufferedImage bImage = ImageIO.read(new File("/home/heitor/Desktop/empresa.jpg"));
+			    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			    ImageIO.write(bImage, "jpg", bos );
+			    empresa.setImagem(bos.toByteArray());
 			}
 			entityManager.persist(empresa);
 			transaction.commit();

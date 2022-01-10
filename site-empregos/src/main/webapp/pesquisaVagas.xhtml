@@ -21,6 +21,7 @@
             </div>
         </header>
         
+        
         <!-- Seção de Vagas-->
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
@@ -33,66 +34,141 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 
-                <!-- Listagem de Vagas -->
-                <div class="row justify-content-center">
-                    
-                    <ui:repeat var="v" value="#{vagaUtils.listaEntidades}" >
-                    	<div class="col-md-6 col-lg-4 mb-5">
-                        <div class="card p-3 mt-2">
-                            <p:outputPanel id="botaoExcluir" rendered="#{loginManager.isEmpresa()}">
-                            	<p:commandLink class="btn btn-danger" action="#{vagaUtils.removeEntity(v.id)}" />
-                            </p:outputPanel>
-                            
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex flex-row align-items-center">
-                                    <div class="icon"> <img src="assets/img/examples/nesquik.jpg" alt="..." class="rounded"/> </div>
-                                    <div class="ms-2 c-details">
-                                        <h6 class="mb-0"> #{v.empresa.nomeComercial} </h6> <span> Fevereiro de 2022 </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mt-5">
-                                <h3 class="heading"> #{v.nome} </h3>
-                                <div class="mt-5">
-                                    <div class = "row">
-                                        <div class = "col"> 
-                                            <span> <b>Local:</b> #{v.local} </span> <br/>
-                                            <span> <b>Salário:</b> #{v.salario} </span> 
-                                        </div>
-                                        <div class = "col"> 
-                                            <span> <b>Carga Horária:</b> #{v.cargaHoraria}</span><br/>
-                                            <span> <b>Posição:</b> #{v.posicao} </span> 
-                                        </div>
-                                    </div><br/>
-                                    <div class = "row">
-                                        <div class = "col">
-                                        	<h:form id="formulario">
-                                            	<p:commandButton rendered="#{loginManager.isLogado()}" class="btn btn-success" value="Informações" ajax="false" action="#{vagaUtils.irPaginaInfo(v)}" update="pagina"/>
-                                        	</h:form>
-                                        </div>        
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    	</div>
-                    </ui:repeat>
-                    
-                    <div class="col-md-6 col-lg-4 mb-5">
-                    <p:outputPanel id="botaoAdicionarVaga" rendered="#{loginManager.isEmpresa()}">
-                    <h:form rendered="#{loginManager.isEmpresa()}">
-	                        <div class="card p-3 mb-2 " style="background-color: transparent; height: 500px;">
-	                            <h:commandLink type="button" class="btn btn-success add-vaga-button" action="/addvaga.xhtml" style="font-size: 30px;">
-	                            	<br/><br/>
-	                                <i class="fas fa-plus"></i> 
-	                            </h:commandLink>
+                <p:outputPanel id="vagasResto" rendered="#{!loginManager.isEmpresa()}">
+	                <!-- Listagem de Vagas -->
+	                <div class="row justify-content-center">
+	                    
+	                    <ui:repeat var="v" value="#{vagaUtils.listaEntidades}" >
+	                    	<div class="col-md-6 col-lg-4 mb-5">
+	                        <div class="card p-3 mt-2">                      	
+	                           
+	                            <div class="d-flex justify-content-between">
+	                                <div class="d-flex flex-row align-items-center">
+	                                    <div class="icon"> <img src="assets/img/examples/nesquik.jpg" alt="..." class="rounded"/> </div>
+	                                    <div class="ms-2 c-details">
+	                                        <h6 class="mb-0"> #{v.empresa.nomeComercial} </h6>
+	                                    </div>
+	                                </div>
+	                            </div>
+	
+	                            <div class="mt-5">
+	                                <h3 class="heading"> #{v.nome} </h3>
+	                                <div class="mt-5">
+	                                    <div class = "row">
+	                                        <div class = "col"> 
+	                                            <span> <b>Local:</b> #{v.local} </span> <br/>
+	                                            <span> <b>Salário:</b> #{v.salario} </span> 
+	                                        </div>
+	                                        <div class = "col"> 
+	                                            <span> <b>Carga Horária:</b> #{v.cargaHoraria}</span><br/>
+	                                            <span> <b>Posição:</b> #{v.posicao} </span> 
+	                                        </div>
+	                                    </div><br/>
+	                                    <div class = "row">
+	                                        <div class = "col">
+	                                        	<h:form id="formulario">
+	                                            	<p:commandLink rendered="#{loginManager.isLogado()}" class="btn btn-info text-light" style="width:100%;" value="Informações" ajax="false" action="#{vagaUtils.irPaginaInfo(v)}" update="pagina"/>
+	                                        	</h:form>
+	                                        	
+	                                        </div>
+	                                        <div class="col">
+					                            <p:outputPanel id="botaoExcluir" rendered="#{loginManager.isEmpresa()}">
+					                            	<p:commandLink class="btn btn-danger" value="Excluir" style="width:100%;" action="#{vagaUtils.removeEntity(v.id)}" />
+					                            </p:outputPanel>
+				                            </div>        
+	                                    </div>
+	                                </div>
+	                            </div>
+	
 	                        </div>
-                    </h:form>
-                    </p:outputPanel>
-                    </div>
-                    
-                </div>
+	                    	</div>
+	                    </ui:repeat>
+	                    
+	                    <div class="col-md-6 col-lg-4 mb-5">
+	                    <p:outputPanel id="botaoAdicionarVaga" rendered="#{loginManager.isEmpresa()}">
+	                    <h:form rendered="#{loginManager.isEmpresa()}">
+		                        <div class="card p-3 mb-2 " style="background-color: transparent; height: 500px;">
+		                            <h:commandLink type="button" class="btn btn-success add-vaga-button" action="/addvaga.xhtml" style="font-size: 30px;">
+		                            	<br/><br/>
+		                                <i class="fas fa-plus"></i> 
+		                            </h:commandLink>
+		                        </div>
+	                    </h:form>
+	                    </p:outputPanel>
+	                    </div>
+	                    
+	                </div>
+	            </p:outputPanel>
+                <!-- Listagem de Vagas -->
+                
+                <p:outputPanel id="vagasEmpresa" rendered="#{loginManager.isEmpresa()}">
+	                <!-- Listagem de Vagas -->
+	                <div class="row justify-content-center">
+	                    
+	                    <ui:repeat var="v" value="#{vagaUtils.listarVagasPorEmpresa(loginManager.getEmpresa())}" >
+	                    	<div class="col-md-6 col-lg-4 mb-5">
+	                        <div class="card p-3 mt-2">                      	
+	                           
+	                            <div class="d-flex justify-content-between">
+	                                <div class="d-flex flex-row align-items-center">
+	                                    <div class="icon"> <img src="assets/img/examples/nesquik.jpg" alt="..." class="rounded"/> </div>
+	                                    <div class="ms-2 c-details">
+	                                        <h6 class="mb-0"> #{v.empresa.nomeComercial} </h6>
+	                                    </div>
+	                                </div>
+	                            </div>
+	
+	                            <div class="mt-5">
+	                                <h3 class="heading"> #{v.nome} </h3>
+	                                <div class="mt-5">
+	                                    <div class = "row">
+	                                        <div class = "col"> 
+	                                            <span> <b>Local:</b> #{v.local} </span> <br/>
+	                                            <span> <b>Salário:</b> #{v.salario} </span> 
+	                                        </div>
+	                                        <div class = "col"> 
+	                                            <span> <b>Carga Horária:</b> #{v.cargaHoraria}</span><br/>
+	                                            <span> <b>Posição:</b> #{v.posicao} </span> 
+	                                        </div>
+	                                    </div><br/>
+	                                    <div class = "row">
+	                                        <div class = "col">
+	                                        	<h:form id="formulario">
+	                                            	<p:commandLink rendered="#{loginManager.isLogado()}" class="btn btn-info text-light" style="width:100%;" value="Informações" ajax="false" action="#{vagaUtils.irPaginaInfo(v)}" update="pagina"/>
+	                                        	</h:form>
+	                                        	
+	                                        </div>
+	                                        <div class="col">
+					                            <p:outputPanel id="botaoExcluir2" rendered="#{loginManager.isEmpresa()}">
+					                            	<p:commandLink class="btn btn-danger" value="Excluir" style="width:100%;" action="#{vagaUtils.removeEntity(v.id)}" />
+					                            </p:outputPanel>
+				                            </div>        
+	                                    </div>
+	                                </div>
+	                            </div>
+	
+	                        </div>
+	                    	</div>
+	                    </ui:repeat>
+	                    
+	                    <div class="col-md-6 col-lg-4 mb-5">
+	                    <p:outputPanel id="botaoAdicionarVaga2" rendered="#{loginManager.isEmpresa()}">
+	                    <h:form rendered="#{loginManager.isEmpresa()}">
+		                        <div class="card p-3 mb-2 " style="background-color: transparent; height: 500px;">
+		                            <h:commandLink type="button" class="btn btn-success add-vaga-button" action="/addvaga.xhtml" style="font-size: 30px;">
+		                            	<br/><br/>
+		                                <i class="fas fa-plus"></i> 
+		                            </h:commandLink>
+		                        </div>
+	                    </h:form>
+	                    </p:outputPanel>
+	                    </div>
+	                    
+	                </div>
+	            </p:outputPanel>
+                <!-- Listagem de Vagas -->
+                
+                
             </div>
         </section>     
 </ui:composition>
