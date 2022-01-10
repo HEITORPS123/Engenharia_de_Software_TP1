@@ -2,7 +2,6 @@
 
 ### Integrantes: 
 - Arthur Yochio Rodrigues Codama (2019006418)
-- Gean Guilherme dos Santos (2018362054)
 - Heitor de Paula Santos Damasceno (2019006671) (Usuário root no GitHub)
 - João Antonio Oliveira Pedrosa (2019006751)
 
