@@ -49,7 +49,7 @@
 			                                <div class="form-group col-md-4">
 			                                	<h:messages id="mensagensCNPJ" for="inputCNPJ" style="color:red" />
 			                                    <h:outputLabel for="inputCNPJ"> CNPJ </h:outputLabel>
-			                                    <p:inputText id="inputCNPJ" type="text" class="form-control" value="#{empresaUtils.empresa.cnpj}" a:placeholder="XX.XXX.XXX/XXXX-XX" required="true" requiredMessage="Campo obrigatório" />
+			                                    <p:inputMask id="inputCNPJ" mask="99.999.999/9999-99" type="text" class="form-control" value="#{empresaUtils.empresa.cnpj}" required="true" requiredMessage="Campo obrigatório" />
 			                                </div>
 			                            </div>
 			                            <br/>

@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="ESTAGIARIO")
@@ -29,7 +31,8 @@ public class Estagiario implements Serializable
 	
 	private String cpf;
 	
-	private String dataNascimento;
+	@Temporal(TemporalType.DATE)
+	private Date dataNascimento;
 	
 	private String local;
 	
@@ -75,12 +78,12 @@ public class Estagiario implements Serializable
 		this.cpf = cpf;
 	}
 	
-	public String getDataNascimento()
+	public Date getDataNascimento()
 	{
 		return dataNascimento;
 	}
 	
-	public void setDataNascimento(String dataNascimento)
+	public void setDataNascimento(Date dataNascimento)
 	{
 		this.dataNascimento = dataNascimento;
 	}
