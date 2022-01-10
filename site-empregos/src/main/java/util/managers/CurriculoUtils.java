@@ -60,13 +60,15 @@ public class CurriculoUtils implements EntityUtils<Curriculo>
 	}
 
 	@Override
-	public void removeEntity(Long id)
+	public String removeEntity(Long id)
 	{
 		try {
 			entityManager.remove(this.searchEntity(id));
 			transaction.commit();
+			return null;
 		} catch(Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 

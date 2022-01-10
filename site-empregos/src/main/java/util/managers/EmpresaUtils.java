@@ -1,5 +1,7 @@
 package util.managers;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +15,9 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.UserTransaction;
+
+import org.apache.commons.io.IOUtils;
+import org.primefaces.model.UploadedFile;
 
 import entidades.Empresa;
 import entidades.Usuario;
@@ -32,6 +37,9 @@ public class EmpresaUtils implements EntityUtils<Empresa>
 	
 	private List<Empresa> listaEntidades;
 	
+	private UploadedFile arquivo;
+	private byte[] conteudo;
+	
 	public EmpresaUtils() {
 
 	}
@@ -45,6 +53,10 @@ public class EmpresaUtils implements EntityUtils<Empresa>
 			transaction.begin();
 			usuario.setEmpresa(empresa);
 			empresa.setUsuario(usuario);
+			if(conteudo != null) {
+				empresa.setImagem(conteudo);
+				conteudo = null;
+			}
 			entityManager.persist(empresa);
 			transaction.commit();
 			this.empresa = new Empresa();
@@ -57,13 +69,15 @@ public class EmpresaUtils implements EntityUtils<Empresa>
 	}
 
 	@Override
-	public void removeEntity(Long id)
+	public String removeEntity(Long id)
 	{
 		try {
 			entityManager.remove(this.searchEntity(id));
 			transaction.commit();
+			return null;
 		} catch(Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 
@@ -125,6 +139,25 @@ public class EmpresaUtils implements EntityUtils<Empresa>
 	public void setUsuario(Usuario usuario)
 	{
 		this.usuario = usuario;
+	}
+
+	public UploadedFile getArquivo()
+	{
+		return arquivo;
+	}
+
+	public void setArquivo(UploadedFile arquivo)
+	{
+		InputStream input;
+		try
+		{
+			input = arquivo.getInputstream();
+			conteudo = IOUtils.toByteArray(input);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

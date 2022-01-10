@@ -78,11 +78,17 @@ public class VagaUtils implements EntityUtils<Vaga>
 		}
 	}
 
-	@Override
-	public void removeEntity(Long id)
+	public String removeEntity(Long id)
 	{
-		// TODO Auto-generated method stub
-		
+		try {
+			transaction.begin();
+			entityManager.remove(this.searchEntity(id));
+			transaction.commit();
+			return "/index.xhtml?faces-redirect=true";
+		} catch(Exception e) {
+			e.printStackTrace();
+			return "/index.xhtml?faces-redirect=true";
+		}
 	}
 
 	@Override
@@ -95,8 +101,7 @@ public class VagaUtils implements EntityUtils<Vaga>
 	@Override
 	public Vaga searchEntity(Long id)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Vaga.class, id);
 	}
 
 	@Override

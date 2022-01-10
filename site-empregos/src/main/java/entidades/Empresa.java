@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Base64;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -97,9 +98,9 @@ public class Empresa implements Serializable
 		this.usuario = usuario;
 	}
 
-	public byte[] getImagem()
+	public String getImagem()
 	{
-		return imagem;
+		return new String(Base64.getEncoder().encodeToString(imagem));
 	}
 
 	public void setImagem(byte[] imagem)

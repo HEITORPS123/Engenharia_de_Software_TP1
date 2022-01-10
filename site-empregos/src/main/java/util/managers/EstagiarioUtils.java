@@ -72,13 +72,15 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 	}
 
 	@Override
-	public void removeEntity(Long id)
+	public String removeEntity(Long id)
 	{
 		try {
 			entityManager.remove(this.searchEntity(id));
 			transaction.commit();
+			return null;
 		} catch(Exception e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 
@@ -157,7 +159,6 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

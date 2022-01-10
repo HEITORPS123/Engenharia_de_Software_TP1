@@ -39,6 +39,9 @@
                     <ui:repeat var="v" value="#{vagaUtils.listaEntidades}" >
                     	<div class="col-md-6 col-lg-4 mb-5">
                         <div class="card p-3 mt-2">
+                            <p:outputPanel id="botaoExcluir" rendered="#{loginManager.isEmpresa()}">
+                            	<p:commandLink class="btn btn-danger" action="#{vagaUtils.removeEntity(v.id)}" />
+                            </p:outputPanel>
                             
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex flex-row align-items-center">
@@ -76,18 +79,18 @@
                     	</div>
                     </ui:repeat>
                     
+                    <div class="col-md-6 col-lg-4 mb-5">
                     <p:outputPanel id="botaoAdicionarVaga" rendered="#{loginManager.isEmpresa()}">
                     <h:form rendered="#{loginManager.isEmpresa()}">
-	                    <div class="col-md-6 col-lg-4 mb-5">
 	                        <div class="card p-3 mb-2 " style="background-color: transparent; height: 500px;">
 	                            <h:commandLink type="button" class="btn btn-success add-vaga-button" action="/addvaga.xhtml" style="font-size: 30px;">
 	                            	<br/><br/>
 	                                <i class="fas fa-plus"></i> 
 	                            </h:commandLink>
 	                        </div>
-	                    </div>
                     </h:form>
                     </p:outputPanel>
+                    </div>
                     
                 </div>
             </div>

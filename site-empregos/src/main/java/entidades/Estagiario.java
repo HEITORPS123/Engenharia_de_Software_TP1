@@ -2,6 +2,7 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -128,9 +129,9 @@ public class Estagiario implements Serializable
 		this.local = local;
 	}
 
-	public byte[] getImagem()
+	public String getImagem()
 	{
-		return imagem;
+		return new String(Base64.getEncoder().encodeToString(imagem));
 	}
 
 	public void setImagem(byte[] imagem)

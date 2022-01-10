@@ -29,6 +29,9 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                     	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/site-empregos/index.xhtml">Inicio</a></li>
+                    	<p:outputPanel id="botaoCurriculo" rendered="#{loginManager.isEstagiario()}" >
+	                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/site-empregos/addcurriculo.xhtml">Curriculo</a></li>
+                        </p:outputPanel>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Vagas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#footer">Sobre</a></li>
                         <p:outputPanel id="loginButton" rendered="#{!loginManager.isLogado()}">

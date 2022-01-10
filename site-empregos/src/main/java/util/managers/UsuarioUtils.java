@@ -42,10 +42,11 @@ public class UsuarioUtils implements EntityUtils<Usuario>
 	}
 
 	@Override
-	public void removeEntity(Long id)
+	public String removeEntity(Long id)
 	{
 		entityManager.remove(this.searchEntity(id));
 		entityManager.getTransaction().commit();
+		return null;
 	}
 
 	@Override
