@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import entidades.Empresa;
+import entidades.Estagiario;
 import entidades.Usuario;
 import util.managers.UsuarioUtils;
 
@@ -103,4 +104,9 @@ public class LoginManager
 	public Empresa getEmpresa() {
 		return usuario.getEmpresa();
 	}
+	
+	public Estagiario getEstagiario() {
+		return usuario.getEstagiario();
+	}
+	
 }

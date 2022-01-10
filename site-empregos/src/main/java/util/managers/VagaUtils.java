@@ -14,7 +14,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
+import entidades.Aplicacao;
 import entidades.Empresa;
+import entidades.Estagiario;
 import entidades.Usuario;
 import entidades.Vaga;
 import seguranca.LoginManager;
@@ -32,6 +34,7 @@ public class VagaUtils implements EntityUtils<Vaga>
 	private Vaga vaga;
 	
 	private List<Vaga> listaEntidades;
+	private List<Aplicacao> listaAplicacoes;
 	
 	private boolean telaInfo = false;
 	
@@ -47,6 +50,21 @@ public class VagaUtils implements EntityUtils<Vaga>
 			entityManager.persist(vaga);
 			transaction.commit();
 			this.vaga = new Vaga();
+			return "/index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+		    e.printStackTrace();
+		    return "/index.xhtml?faces-redirect=true";
+		}
+	}
+	
+	public String persistAplicacao(Estagiario estagiario) {
+		try{
+			Aplicacao aplicacao = new Aplicacao();
+			transaction.begin();
+			aplicacao.setEstagiario(estagiario);
+			aplicacao.setVaga(vaga);
+			entityManager.persist(aplicacao);
+			transaction.commit();
 			return "/index.xhtml?faces-redirect=true";
 		} catch (Exception e) {
 		    e.printStackTrace();
@@ -129,6 +147,18 @@ public class VagaUtils implements EntityUtils<Vaga>
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public List<Aplicacao> getListaAplicacoes()
+	{
+		Query query = entityManager.createQuery("SELECT a FROM Aplicacao a WHERE a.vaga.id = :vagaId",Aplicacao.class);
+		query.setParameter("vagaId", vaga.getId());
+		return query.getResultList();
+	}
+
+	public void setListaAplicacoes(List<Aplicacao> listaAplicacoes)
+	{
+		this.listaAplicacoes = listaAplicacoes;
 	}
 	
 }

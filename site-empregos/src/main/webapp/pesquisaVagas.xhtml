@@ -32,12 +32,13 @@
                     <div class="divider-custom-icon"><i class="fas fa-briefcase"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
+                
                 <!-- Listagem de Vagas -->
                 <div class="row justify-content-center">
                     
                     <ui:repeat var="v" value="#{vagaUtils.listaEntidades}" >
                     	<div class="col-md-6 col-lg-4 mb-5">
-                        <div class="card p-3 mb-2">
+                        <div class="card p-3 mt-2">
                             
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex flex-row align-items-center">
@@ -76,9 +77,9 @@
                     </ui:repeat>
                     
                     <p:outputPanel id="botaoAdicionarVaga" rendered="#{loginManager.isEmpresa()}">
-                    <h:form>
+                    <h:form rendered="#{loginManager.isEmpresa()}">
 	                    <div class="col-md-6 col-lg-4 mb-5">
-	                        <div class="card p-3 mb-2 text-center" style="background-color: transparent; height: 500px;">
+	                        <div class="card p-3 mb-2 " style="background-color: transparent; height: 500px;">
 	                            <h:commandLink type="button" class="btn btn-success add-vaga-button" action="/addvaga.xhtml" style="font-size: 30px;">
 	                            	<br/><br/>
 	                                <i class="fas fa-plus"></i> 
@@ -87,6 +88,7 @@
 	                    </div>
                     </h:form>
                     </p:outputPanel>
+                    
                 </div>
             </div>
         </section>     

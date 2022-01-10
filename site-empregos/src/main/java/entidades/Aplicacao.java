@@ -22,10 +22,10 @@ public class Aplicacao implements Serializable
 	@GeneratedValue
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Estagiario estagiario;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Vaga vaga;
 	
 	private String status;

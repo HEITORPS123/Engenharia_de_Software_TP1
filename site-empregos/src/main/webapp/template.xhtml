@@ -3,7 +3,7 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui"
-    xmlns:pt="http://java.sun.com/jsf/passthrough">
+    xmlns:a="http://java.sun.com/jsf/passthrough">
 
     <h:head>
  		<meta charset="utf-8" />
@@ -28,6 +28,7 @@
                 <a class="navbar-brand" href="#page-top"> site-empregos </a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
+                    	<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/site-empregos/index.xhtml">Inicio</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Vagas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#footer">Sobre</a></li>
                         <p:outputPanel id="loginButton" rendered="#{!loginManager.isLogado()}">
@@ -48,7 +49,6 @@
 	  	
 	  	 <!-- Login Modal -->
         <div id="id01" class="card modal bg-white cemter-screen">
-        	
             <h:commandLink onclick="document.getElementById('id01').style.display='none'"
             class="close" title="Close Modal">
             	<i class="fa fa-times"></i>
@@ -65,11 +65,11 @@
                     <h:form id="login" >
                         <div class="form-group" style = "margin-top: 5%;">
                         <h:outputLabel for="exampleInputEmail1" value="Login"/>
-                        <h:inputText type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter login" value="#{loginManager.login}"/>
+                        <p:inputText type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter login" value="#{loginManager.login}"/>
                         </div>
                         <div class="form-group" style = "margin-top: 5%;">
                         <h:outputLabel for="exampleInputPassword1" value="Senha"/>
-                        <h:inputText type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="#{loginManager.senha}"/>
+                        <p:inputText type="password" class="form-control" id="exampleInputPassword1" a:placeholder="Password" value="#{loginManager.senha}"/>
                         </div>
                         <div class="form-check">
                         </div>

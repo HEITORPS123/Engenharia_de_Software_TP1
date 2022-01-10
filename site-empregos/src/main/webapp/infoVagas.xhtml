@@ -61,9 +61,11 @@
                                     <div class="col-2"></div>
                                 </div>
 
-								<p:outputPanel id="botaoAdicionarVaga" rendered="#{loginManager.isEstagiario()}">
+								<p:outputPanel id="botaoAdicionarAplicacao" rendered="#{loginManager.isEstagiario()}">
 	                    			<h:form>
-	                    				<h:commandLink type="button" class="btn btn-outline-primary px-4" value="Aplicar" action="" style="font-size: 30px;" />
+	                    				<div class="buttons text-center">
+	                    					<h:commandLink type="button" class="btn btn-outline-primary px-4" value="Aplicar" action="#{vagaUtils.persistAplicacao(loginManager.getEstagiario())}" style="font-size: 30px;" />
+	                            		</div>
 	                            	</h:form>
                             	</p:outputPanel>
                             </div>
@@ -71,4 +73,38 @@
                     </div>
                 </div>
         </header>
+        
+        <p:outputPanel id="listaCandidatos" rendered="#{loginManager.isEmpresa()}">
+        	<section class="page-section portfolio" id="portfolio">
+            <div class="container" style="margin-top: -10%;">
+                <!-- Heading -->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"> Candidatos </h2>
+                <!-- Divisor com Ícone -->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-users"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+	                
+	            <div class="row justify-content-center">
+	            	<ui:repeat var="a" value="#{vagaUtils.listaAplicacoes}" >
+	                    <div class="col-md-6 col-lg-4 mb-5">
+	                        <div class="mt-2 d-flex justify-content-center">
+	                            <div class="card p-3">
+	                                <div class="d-flex align-items-center">
+	                                    <div class="image"> <img src="https://homepages.dcc.ufmg.br/~meira/images/meira.jpg" class="rounded" width="155" /> </div>
+	                                    <div class="ml-3 w-100" style = "margin-left: 5%;">
+	                                        <h4 class="mb-0 mt-0"> #{a.estagiario.nomeCompleto} </h4> 
+	                                        <span>#{a.estagiario.local}</span>
+	                                        <div class="button mt-2 d-flex flex-row align-items-center"> <button class="btn btn-info text-light w-50"><i class = "fas fa-download"></i> CV</button> </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                 </ui:repeat>
+            	</div>
+            </div>
+            </section>
+        </p:outputPanel>
 </ui:composition>

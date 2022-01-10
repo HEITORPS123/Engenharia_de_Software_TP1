@@ -29,7 +29,7 @@ public class Estagiario implements Serializable
 	
 	private String cpf;
 	
-	private Date dataNascimento;
+	private String dataNascimento;
 	
 	private String local;
 	
@@ -75,12 +75,12 @@ public class Estagiario implements Serializable
 		this.cpf = cpf;
 	}
 	
-	public Date getDataNascimento()
+	public String getDataNascimento()
 	{
 		return dataNascimento;
 	}
 	
-	public void setDataNascimento(Date dataNascimento)
+	public void setDataNascimento(String dataNascimento)
 	{
 		this.dataNascimento = dataNascimento;
 	}
