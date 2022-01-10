@@ -18,7 +18,15 @@
 			                            <div class="divider-custom-line"></div>
 			                        </div>
 			                        
-			                        <h:form id="formularioCadastro">
+			                        <h:form id="uploadImagem" enctype="multipart/form-data" >
+			                        		<h:outputLabel for="inputImagem">Imagem</h:outputLabel>
+			                        		<br/>
+			                            	<p:fileUpload id="inputImagem" label="Escolher imagem" value="#{estagiarioUtils.arquivo}" mode="simple" skinSimple="true" />
+			       
+			                            	<p:commandButton ajax="false" value="Upload" />
+			                            <br/>
+			                        </h:form>
+			                        <h:form id="formularioCadastro" >
 			                            <div class="row">
 			                                <div class="form-group col">
 			                                	<h:messages id="mensagensLogin" for="inputLogin" style="color:red" />

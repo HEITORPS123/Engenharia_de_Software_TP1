@@ -36,13 +36,15 @@ public class Estagiario implements Serializable
 	
 	private String local;
 	
+	private byte[] imagem;
+	
 	@OneToOne(mappedBy = "estagiario", cascade = CascadeType.PERSIST,
             fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name="estagiario_id")
 	private Usuario usuario;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "curriculo_id")
+	@OneToOne(mappedBy = "estagiario", cascade = CascadeType.MERGE,
+            fetch = FetchType.EAGER)
 	private Curriculo curriculo;
 	
 	@OneToMany(mappedBy = "estagiario")
@@ -124,5 +126,15 @@ public class Estagiario implements Serializable
 
 	public void setLocal(String local) {
 		this.local = local;
+	}
+
+	public byte[] getImagem()
+	{
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem)
+	{
+		this.imagem = imagem;
 	}
 }

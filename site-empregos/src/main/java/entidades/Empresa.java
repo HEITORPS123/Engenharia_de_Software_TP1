@@ -29,6 +29,8 @@ public class Empresa implements Serializable
 	
 	private String cnpj;
 	
+	private byte[] imagem;
+	
 	@OneToOne(mappedBy = "empresa", cascade = CascadeType.PERSIST,
             fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name="empresa_id")
@@ -93,6 +95,16 @@ public class Empresa implements Serializable
 	public void setUsuario(Usuario usuario)
 	{
 		this.usuario = usuario;
+	}
+
+	public byte[] getImagem()
+	{
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem)
+	{
+		this.imagem = imagem;
 	}
 
 }

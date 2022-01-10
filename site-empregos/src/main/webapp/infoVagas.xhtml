@@ -96,7 +96,20 @@
 	                                    <div class="ml-3 w-100" style = "margin-left: 5%;">
 	                                        <h4 class="mb-0 mt-0"> #{a.estagiario.nomeCompleto} </h4> 
 	                                        <span>#{a.estagiario.local}</span>
-	                                        <div class="button mt-2 d-flex flex-row align-items-center"> <button class="btn btn-info text-light w-50"><i class = "fas fa-download"></i> CV</button> </div>
+	                                        <div class="button mt-2 d-flex flex-row align-items-center">
+	                                        <h:form>
+	                                        <p:commandLink
+	                                        	class="btn btn-info text-light w-50"
+	                                        	value="CV"
+												ajax="false"
+												immediate="true">
+												<i class="fas fa-download" />
+												
+												<p:fileDownload value="#{vagaUtils.download(a.estagiario.curriculo)}"/>
+											
+											</p:commandLink>
+											</h:form>
+											</div>
 	                                    </div>
 	                                </div>
 	                            </div>

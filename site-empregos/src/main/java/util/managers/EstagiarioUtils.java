@@ -1,5 +1,7 @@
 package util.managers;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +16,9 @@ import javax.persistence.Query;
 import javax.transaction.NotSupportedException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+
+import org.apache.commons.io.IOUtils;
+import org.primefaces.model.UploadedFile;
 
 import entidades.Estagiario;
 import entidades.Usuario;
@@ -33,6 +38,9 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 	
 	private List<Estagiario> listaEntidades;
 	
+	private UploadedFile arquivo;
+	private byte[] conteudo;
+	
 	public EstagiarioUtils() {
 		this.estagiario = new Estagiario();
 		this.usuario = new Usuario();
@@ -48,6 +56,10 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 	
 			usuario.setEstagiario(estagiario);
 			estagiario.setUsuario(usuario);
+			if(conteudo != null) {
+				estagiario.setImagem(conteudo);
+				conteudo = null;
+			}
 			entityManager.persist(estagiario);
 			transaction.commit();
 			this.estagiario = new Estagiario();
@@ -127,6 +139,27 @@ public class EstagiarioUtils implements EntityUtils<Estagiario>
 	public void setUsuario(Usuario usuario)
 	{
 		this.usuario = usuario;
+	}
+
+	public UploadedFile getArquivo()
+	{
+		return arquivo;
+	}
+
+	public void setArquivo(UploadedFile arquivo)
+	{
+		System.out.println("Aaa");
+		InputStream input;
+		try
+		{
+			input = arquivo.getInputstream();
+			conteudo = IOUtils.toByteArray(input);
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

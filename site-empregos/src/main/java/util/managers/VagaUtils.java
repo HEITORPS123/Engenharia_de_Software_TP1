@@ -1,5 +1,8 @@
 package util.managers;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,7 +17,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.UserTransaction;
 
+import org.primefaces.model.DefaultStreamedContent;
+
 import entidades.Aplicacao;
+import entidades.Curriculo;
 import entidades.Empresa;
 import entidades.Estagiario;
 import entidades.Usuario;
@@ -160,5 +166,12 @@ public class VagaUtils implements EntityUtils<Vaga>
 	{
 		this.listaAplicacoes = listaAplicacoes;
 	}
+	
+	public DefaultStreamedContent download(Curriculo curriculo) throws IOException {
+		InputStream byteStream = new ByteArrayInputStream(curriculo.getArquivo());
+		DefaultStreamedContent downloadArquivo = new DefaultStreamedContent(byteStream, "text/csv", "arquivo.pdf");
+    	return downloadArquivo;
+	}
+	
 	
 }

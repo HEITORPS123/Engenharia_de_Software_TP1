@@ -23,8 +23,7 @@ public class Curriculo implements Serializable
 	
 	private byte [] arquivo;
 	
-	@OneToOne(mappedBy = "curriculo", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	private Estagiario estagiario;
 	
 	public Long getId()
@@ -45,5 +44,15 @@ public class Curriculo implements Serializable
 	public void setArquivo(byte[] arquivo)
 	{
 		this.arquivo = arquivo;
+	}
+
+	public Estagiario getEstagiario()
+	{
+		return estagiario;
+	}
+
+	public void setEstagiario(Estagiario estagiario)
+	{
+		this.estagiario = estagiario;
 	}
 }
