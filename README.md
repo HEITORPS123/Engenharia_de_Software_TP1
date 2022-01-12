@@ -3,7 +3,7 @@
 ### Integrantes: 
 - Arthur Yochio Rodrigues Codama (2019006418)
 - Heitor de Paula Santos Damasceno (2019006671) (Usuário root no GitHub)
-- João Antonio Oliveira Pedrosa (2019006751)
+- João Antonio Oliveira Pedrosa (2019006752)
 
 ### Objetivo do Sistema:
 
